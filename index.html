@@ -10,230 +10,477 @@
   <meta property="og:image" content="https://doris-lessings-37d.netlify.app/assets/photos/IMG_3457.webp">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --cream: #FAF7F2;
-      --dark: #1a1a1a;
+      --dark: #111;
       --gold: #B8924A;
       --gold-light: #D4AF6A;
       --text: #1a1a1a;
-      --text-secondary: #3a3a3a;
+      --text-secondary: #555;
       --sans: 'Inter', -apple-system, sans-serif;
       --serif: 'Playfair Display', Georgia, serif;
     }
 
     html { scroll-behavior: smooth; }
-    body { font-family: var(--sans); color: var(--text); background: var(--cream); line-height: 1.7; font-weight: 400; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--sans); color: var(--text); background: var(--cream);
+      line-height: 1.7; font-weight: 400; -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .reveal.visible {
+      opacity: 1; transform: translateY(0);
+    }
 
     /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 1.25rem 2rem;
-      transition: background 0.3s, box-shadow 0.3s;
+      padding: 1.5rem 3rem;
+      transition: background 0.4s, box-shadow 0.4s, padding 0.4s;
     }
     nav.scrolled {
-      background: rgba(255,255,255,0.97);
-      box-shadow: 0 1px 20px rgba(0,0,0,0.08);
+      background: rgba(250,247,242,0.97);
+      box-shadow: 0 1px 30px rgba(0,0,0,0.06);
+      padding: 1rem 3rem;
     }
     nav .logo {
-      font-family: var(--serif); font-size: 1.1rem; font-weight: 600;
-      color: #fff; text-decoration: none; letter-spacing: 0.02em;
-      transition: color 0.3s;
+      font-family: var(--serif); font-size: 1.15rem; font-weight: 600;
+      color: #fff; text-decoration: none; letter-spacing: 0.03em;
+      transition: color 0.4s;
     }
     nav.scrolled .logo { color: var(--dark); }
-    nav .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    nav .nav-links { display: flex; gap: 2rem; list-style: none; }
     nav .nav-links a {
-      color: #fff; text-decoration: none; font-size: 0.85rem;
-      font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
-      transition: color 0.3s; opacity: 0.95;
+      color: rgba(255,255,255,0.9); text-decoration: none; font-size: 0.8rem;
+      font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      transition: color 0.3s;
     }
-    nav.scrolled .nav-links a { color: var(--dark); }
+    nav.scrolled .nav-links a { color: var(--text-secondary); }
     nav .nav-links a:hover { color: var(--gold); }
 
+    /* HAMBURGER */
+    .hamburger { display: none; cursor: pointer; z-index: 1001; position: relative; width: 28px; height: 20px; }
+    .hamburger span {
+      display: block; width: 28px; height: 2px; background: #fff;
+      position: absolute; left: 0; transition: all 0.35s cubic-bezier(0.77, 0.2, 0.05, 1);
+    }
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 9px; }
+    .hamburger span:nth-child(3) { top: 18px; }
+    nav.scrolled .hamburger span { background: var(--dark); }
+    .hamburger.open span { background: #fff !important; }
+    .hamburger.open span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed; inset: 0; background: rgba(17,17,17,0.97);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2rem; z-index: 999;
+      opacity: 0; pointer-events: none; transition: opacity 0.4s;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      color: #fff; text-decoration: none; font-family: var(--serif);
+      font-size: 2rem; font-weight: 400; letter-spacing: 0.02em;
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+
     @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      nav.scrolled { padding: 0.8rem 1.5rem; }
       nav .nav-links { display: none; }
-      nav { padding: 1rem 1.25rem; }
+      .hamburger { display: block; }
     }
 
     /* HERO */
     .hero {
-      position: relative; height: 100vh; min-height: 600px;
+      position: relative; height: 100vh; min-height: 700px;
       display: flex; align-items: flex-end; justify-content: flex-start;
       overflow: hidden;
     }
     .hero-img {
       position: absolute; inset: 0; width: 100%; height: 100%;
       object-fit: cover; object-position: center;
+      will-change: transform;
     }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.05) 100%);
+      background: linear-gradient(to top,
+        rgba(0,0,0,0.75) 0%,
+        rgba(0,0,0,0.35) 40%,
+        rgba(0,0,0,0.1) 70%,
+        rgba(0,0,0,0.05) 100%
+      );
     }
     .hero-content {
-      position: relative; z-index: 2; padding: 4rem 3rem;
-      max-width: 700px;
+      position: relative; z-index: 2; padding: 5rem 3rem;
+      max-width: 800px;
     }
     .hero-tag {
-      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--gold-light); margin-bottom: 1rem;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.25rem;
     }
     .hero-title {
-      font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 400; color: #fff; line-height: 1.15; margin-bottom: 1rem;
+      font-family: var(--serif); font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 400; color: #fff; line-height: 1.1; margin-bottom: 1.25rem;
     }
     .hero-subtitle {
-      font-size: 1.1rem; color: rgba(255,255,255,0.9); font-weight: 300;
-      line-height: 1.6; max-width: 500px;
+      font-size: 1.15rem; color: rgba(255,255,255,0.85); font-weight: 300;
+      line-height: 1.7; max-width: 520px;
+    }
+    .scroll-indicator {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    }
+    .scroll-indicator span {
+      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); font-weight: 500;
+    }
+    .scroll-chevron {
+      width: 24px; height: 24px; border-right: 1.5px solid rgba(255,255,255,0.5);
+      border-bottom: 1.5px solid rgba(255,255,255,0.5);
+      transform: rotate(45deg); animation: scrollBounce 2s ease infinite;
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.5; }
+      50% { transform: rotate(45deg) translateY(6px); opacity: 1; }
     }
 
     @media (max-width: 768px) {
-      .hero-content { padding: 2rem 1.5rem; }
+      .hero-content { padding: 3rem 1.5rem; }
     }
 
-    /* SECTIONS */
-    section { padding: 6rem 2rem; }
-    @media (max-width: 768px) { section { padding: 4rem 1.25rem; } }
-
-    .section-inner { max-width: 900px; margin: 0 auto; }
+    /* EDITORIAL INTRO */
+    .intro-section {
+      padding: 8rem 3rem;
+      max-width: 1400px; margin: 0 auto;
+    }
+    .intro-grid {
+      display: grid; grid-template-columns: 1.2fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    .intro-text .section-number {
+      font-family: var(--serif); font-size: 6rem; color: rgba(184,146,74,0.15);
+      font-weight: 400; line-height: 1; margin-bottom: -1rem;
+    }
     .section-tag {
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em;
       text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;
+      display: block;
     }
     .section-title {
-      font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; color: var(--dark);
+      font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 400; line-height: 1.15; margin-bottom: 1.75rem; color: var(--dark);
     }
     .section-body {
-      font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary);
-      max-width: 650px;
+      font-size: 1.05rem; line-height: 1.85; color: var(--text-secondary);
     }
     .section-body p + p { margin-top: 1.25rem; }
-
-    /* FULL-WIDTH IMAGE */
-    .full-image {
-      width: 100%; height: 70vh; min-height: 400px;
-      object-fit: cover; display: block;
+    .intro-image {
+      position: relative;
     }
-    .full-image-short {
-      width: 100%; height: 50vh; min-height: 300px;
-      object-fit: cover; display: block;
+    .intro-image img {
+      width: 100%; height: auto; display: block;
+      box-shadow: 30px 30px 0 rgba(184,146,74,0.08);
+    }
+    @media (max-width: 900px) {
+      .intro-section { padding: 4rem 1.5rem; }
+      .intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .intro-image { order: -1; }
+      .intro-text .section-number { font-size: 4rem; }
     }
 
-    /* ARCHITECTURE - Dark section */
+    /* FEATURES — ALTERNATING */
+    .features-section {
+      padding: 4rem 0 6rem;
+    }
+    .feature-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 70vh; overflow: hidden;
+    }
+    .feature-row.reverse .feature-img-wrap { order: 2; }
+    .feature-row.reverse .feature-content { order: 1; }
+    .feature-img-wrap {
+      position: relative; overflow: hidden;
+    }
+    .feature-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .feature-row:hover .feature-img-wrap img {
+      transform: scale(1.03);
+    }
+    .feature-content {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 4rem 5rem;
+    }
+    .feature-number {
+      font-family: var(--serif); font-size: 5rem; color: rgba(184,146,74,0.12);
+      font-weight: 400; line-height: 1; margin-bottom: 0.5rem;
+    }
+    .feature-title {
+      font-family: var(--serif); font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      color: var(--dark); margin-bottom: 1.25rem; line-height: 1.2;
+    }
+    .feature-text {
+      font-size: 1rem; line-height: 1.85; color: var(--text-secondary);
+      max-width: 440px;
+    }
+    @media (max-width: 768px) {
+      .feature-row { grid-template-columns: 1fr; min-height: auto; }
+      .feature-row.reverse .feature-img-wrap { order: 0; }
+      .feature-row.reverse .feature-content { order: 0; }
+      .feature-img-wrap { height: 50vh; }
+      .feature-content { padding: 3rem 1.5rem; }
+      .feature-number { font-size: 3.5rem; }
+    }
+
+    /* ARCHITECTURE */
     .arch-section {
       position: relative; background: #0a0a0a; color: #fff;
-      padding: 6rem 2rem; overflow: hidden;
+      padding: 0; overflow: hidden;
     }
     .arch-bg {
       position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0.2;
+      object-fit: cover; opacity: 0.12;
     }
-    .arch-inner {
-      position: relative; z-index: 2; max-width: 900px; margin: 0 auto;
+    .arch-grid {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 90vh;
+    }
+    .arch-content {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem;
     }
     .arch-section .section-tag { color: var(--gold-light); }
-    .arch-section .section-title { color: #fff; }
-    .arch-section .section-body { color: rgba(255,255,255,0.75); }
+    .arch-section .section-title { color: #fff; font-size: clamp(2rem, 3.5vw, 3rem); }
+    .arch-section .section-body { color: rgba(255,255,255,0.7); }
+    .arch-divider {
+      width: 60px; height: 1px; background: var(--gold); margin: 3rem 0;
+    }
     .arch-stats {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 2.5rem; margin-top: 3rem;
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
     }
     .arch-stat-num {
-      font-family: var(--serif); font-size: 3.5rem; font-weight: 400;
+      font-family: var(--serif); font-size: 5rem; font-weight: 400;
       color: var(--gold-light); line-height: 1;
     }
     .arch-stat-label {
-      font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem;
-      letter-spacing: 0.04em;
+      font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 0.5rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .arch-image {
+      position: relative; overflow: hidden;
+    }
+    .arch-image img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    @media (max-width: 900px) {
+      .arch-grid { grid-template-columns: 1fr; }
+      .arch-content { padding: 4rem 1.5rem; }
+      .arch-image { height: 50vh; }
+      .arch-stat-num { font-size: 3.5rem; }
     }
 
-    /* FEATURES */
-    .features-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem; margin-top: 3rem;
+    /* TERRACE SHOWCASE */
+    .terrace-section {
+      position: relative; height: 100vh; min-height: 600px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      overflow: hidden;
     }
-    .feature-card {
-      padding: 2rem 0; border-top: 1px solid rgba(0,0,0,0.08);
+    .terrace-half {
+      position: relative; overflow: hidden;
     }
-    .feature-icon {
-      width: 32px; height: 32px; margin-bottom: 1rem; color: var(--gold);
+    .terrace-half img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
     }
-    .feature-title {
-      font-family: var(--serif); font-size: 1.3rem; margin-bottom: 0.75rem;
-      color: var(--dark);
+    .terrace-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.25);
+      pointer-events: none;
     }
-    .feature-text {
-      font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary);
+    .terrace-quote {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.8rem, 3.5vw, 3rem); color: #fff;
+      text-align: center; max-width: 600px; padding: 2rem;
+      line-height: 1.3;
+    }
+    @media (max-width: 768px) {
+      .terrace-section { grid-template-columns: 1fr; height: auto; }
+      .terrace-half { height: 50vh; }
     }
 
     /* LOCATION */
+    .location-section {
+      padding: 8rem 3rem;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .location-header { max-width: 650px; margin-bottom: 4rem; }
     .location-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem; margin-top: 3rem;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0; border-top: 1px solid rgba(0,0,0,0.08);
     }
     .loc-item {
-      padding: 1.5rem 0; border-top: 1px solid rgba(0,0,0,0.08);
+      padding: 2.5rem 2rem 2.5rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
     }
     .loc-time {
-      font-family: var(--serif); font-size: 2rem; color: var(--gold);
-      font-weight: 400;
+      font-family: var(--serif); font-size: 3.5rem; color: var(--gold);
+      font-weight: 400; line-height: 1;
     }
     .loc-unit {
-      font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;
+      font-size: 0.85rem; color: var(--gold); font-weight: 500;
+      margin-left: 0.15em;
     }
     .loc-dest {
-      font-size: 0.95rem; color: var(--dark); margin-top: 0.25rem; font-weight: 500;
+      font-size: 1rem; color: var(--dark); margin-top: 0.5rem; font-weight: 500;
     }
     .loc-mode {
       font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.15rem;
+      text-transform: uppercase; letter-spacing: 0.08em;
     }
-
-    /* GALLERY */
-    .gallery-section { background: #fff; }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.5rem;
-      margin-top: 3rem;
-    }
-    .gallery-grid img {
-      width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
-      transition: transform 0.4s;
-    }
-    .gallery-grid img:hover { transform: scale(1.02); }
     @media (max-width: 768px) {
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .location-section { padding: 4rem 1.5rem; }
+      .location-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 480px) {
-      .gallery-grid { grid-template-columns: 1fr; }
+      .location-grid { grid-template-columns: 1fr; }
+    }
+
+    /* NEIGHBORHOOD EDITORIAL */
+    .neighborhood-section {
+      padding: 0;
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 60vh;
+    }
+    .neighborhood-content {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem;
+      background: #fff;
+    }
+    .neighborhood-image {
+      position: relative; overflow: hidden;
+    }
+    .neighborhood-image img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    @media (max-width: 768px) {
+      .neighborhood-section { grid-template-columns: 1fr; }
+      .neighborhood-content { padding: 3rem 1.5rem; }
+      .neighborhood-image { height: 50vh; }
+    }
+
+    /* GALLERY — HORIZONTAL SCROLL */
+    .gallery-section {
+      padding: 6rem 0 6rem 3rem;
+      background: #fff;
+      overflow: hidden;
+    }
+    .gallery-header {
+      max-width: 600px; margin-bottom: 3rem;
+    }
+    .gallery-track {
+      display: flex; gap: 1.25rem;
+      overflow-x: auto; overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 1rem;
+      padding-right: 3rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold) transparent;
+    }
+    .gallery-track::-webkit-scrollbar { height: 4px; }
+    .gallery-track::-webkit-scrollbar-track { background: transparent; }
+    .gallery-track::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+    .gallery-track img {
+      height: 70vh; width: auto; max-width: 80vw;
+      object-fit: cover; display: block; flex-shrink: 0;
+      scroll-snap-align: start;
+      cursor: pointer;
+      transition: filter 0.3s;
+    }
+    .gallery-track img:hover { filter: brightness(0.92); }
+    @media (max-width: 768px) {
+      .gallery-section { padding: 4rem 0 4rem 1.5rem; }
+      .gallery-track { flex-direction: column; overflow-x: hidden; padding-right: 1.5rem; }
+      .gallery-track img { height: auto; width: 100%; max-width: 100%; }
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(0,0,0,0.95);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox img {
+      max-width: 90vw; max-height: 90vh; object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      background: none; border: none; color: #fff; font-size: 2rem;
+      cursor: pointer; width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0.7; transition: opacity 0.3s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: #fff; font-size: 2.5rem;
+      cursor: pointer; padding: 1rem; opacity: 0.5; transition: opacity 0.3s;
+    }
+    .lightbox-nav:hover { opacity: 1; }
+    .lightbox-prev { left: 1rem; }
+    .lightbox-next { right: 1rem; }
+    .lightbox-counter {
+      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.5); font-size: 0.85rem; letter-spacing: 0.1em;
     }
 
     /* CTA */
     .cta-section {
       background: var(--dark); color: #fff; text-align: center;
-      padding: 6rem 2rem;
+      padding: 8rem 2rem;
     }
     .cta-section .section-tag { color: var(--gold-light); }
     .cta-section .section-title { color: #fff; }
-    .cta-section .section-body { color: rgba(255,255,255,0.7); margin: 0 auto; }
-    .cta-btn {
-      display: inline-block; margin-top: 2.5rem;
-      padding: 1rem 2.5rem; border: 1px solid var(--gold);
-      color: var(--gold); text-decoration: none; font-size: 0.85rem;
-      font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-      transition: all 0.3s;
+    .cta-section .section-body { color: rgba(255,255,255,0.6); margin: 0 auto; max-width: 500px; }
+    .cta-contact {
+      margin-top: 2.5rem; display: flex; flex-direction: column;
+      align-items: center; gap: 0.75rem;
     }
-    .cta-btn:hover { background: var(--gold); color: #fff; }
+    .cta-contact a {
+      color: var(--gold); text-decoration: none; font-size: 1.1rem;
+      font-weight: 400; letter-spacing: 0.02em;
+      transition: color 0.3s;
+    }
+    .cta-contact a:hover { color: var(--gold-light); }
+    .cta-contact .cta-note {
+      color: rgba(255,255,255,0.4); font-size: 0.85rem;
+      font-style: italic; margin-top: 0.5rem;
+    }
 
     /* FOOTER */
     footer {
       padding: 3rem 2rem; text-align: center;
       font-size: 0.8rem; color: var(--text-secondary);
-      border-top: 1px solid rgba(0,0,0,0.06);
+      letter-spacing: 0.05em;
     }
   </style>
 </head>
@@ -249,184 +496,222 @@
       <li><a href="#galleri">Galleri</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
+    <div class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#boligen">Boligen</a>
+    <a href="#arkitektur">Arkitektur</a>
+    <a href="#beliggenhed">Beliggenhed</a>
+    <a href="#galleri">Galleri</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
-    <img src="assets/photos/IMG_3457.webp" alt="Køkken og spisestue med åbne terrassedøre og kobberpendler" class="hero-img" loading="eager">
+    <img src="assets/photos/IMG_3457.webp" alt="Køkken og spisestue med åbne terrassedøre og kobberpendler" class="hero-img" id="heroImg" loading="eager">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-tag">Ørestad Syd, København</p>
-      <h1 class="hero-title">Doris Lessings Vej 37D</h1>
+      <p class="hero-tag">Ørestad Syd · København</p>
+      <h1 class="hero-title">Doris Lessings<br>Vej 37D</h1>
       <p class="hero-subtitle">150 m² rækkehus over tre etager med privat tagterrasse. Én af kun fem i Bella-rækken.</p>
     </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-chevron"></div>
+    </div>
   </section>
 
-  <!-- INTRO -->
-  <section id="boligen">
-    <div class="section-inner">
-      <p class="section-tag">Dit nye hjem</p>
-      <h2 class="section-title">Forestil dig et hjem, der vokser med dig</h2>
-      <div class="section-body">
-        <p>Her står du i dit eget rækkehus midt i København. Lyset falder ind gennem de store terrassedøre, og duften af kaffe blander sig med frisk luft fra din private tagterrasse. Tre etager, seks niveauer, 150 kvadratmeter — alt dit.</p>
-        <p>Doris Lessings Vej 37D er ikke bare en bolig. Det er det sted, hvor hverdagen folder sig ud over split-level etager, hvor børnene leger på deres eget niveau, og hvor du trækker dig op på taget med et glas vin og udsigt over hele Ørestad.</p>
+  <!-- INTRO — EDITORIAL LAYOUT -->
+  <section class="intro-section" id="boligen">
+    <div class="intro-grid">
+      <div class="intro-text reveal">
+        <div class="section-number">01</div>
+        <span class="section-tag">Dit nye hjem</span>
+        <h2 class="section-title">Forestil dig et hjem,<br>der vokser med dig</h2>
+        <div class="section-body">
+          <p>Her står du i dit eget rækkehus midt i København. Lyset falder ind gennem de store terrassedøre, og duften af kaffe blander sig med frisk luft fra din private tagterrasse. Tre etager, seks niveauer, 150 kvadratmeter — alt dit.</p>
+          <p>Doris Lessings Vej 37D er ikke bare en bolig. Det er det sted, hvor hverdagen folder sig ud over split-level etager, hvor børnene leger på deres eget niveau, og hvor du trækker dig op på taget med et glas vin og udsigt over hele Ørestad.</p>
+        </div>
+      </div>
+      <div class="intro-image reveal" style="transition-delay: 0.15s;">
+        <img src="assets/photos/kitchen-dining-signal.jpg" alt="Køkken og spisestue med naturligt lys" loading="lazy">
       </div>
     </div>
   </section>
 
-  <!-- LIVING ROOM IMAGE -->
-  <img src="assets/photos/IMG_3459.webp" alt="Stue set oppefra med cognacfarvet sofa og grønne puder" class="full-image" loading="lazy">
+  <!-- FEATURES — ALTERNATING EDITORIAL -->
+  <section class="features-section">
+    <div class="feature-row reveal">
+      <div class="feature-img-wrap">
+        <img src="assets/photos/IMG_3464.webp" alt="Hjemmekontor med dobbelte skærme" loading="lazy">
+      </div>
+      <div class="feature-content">
+        <div class="feature-number">02</div>
+        <h3 class="feature-title">Dit hjemmekontor</h3>
+        <p class="feature-text">Et dedikeret kontor med plads til dobbelte skærme og ro til dybe tanker. Adskilt fra resten af hjemmet på sit eget split-level, så arbejde og fritid aldrig blandes.</p>
+      </div>
+    </div>
 
-  <!-- FEATURES -->
-  <section style="background: #fff;">
-    <div class="section-inner">
-      <p class="section-tag">Rummene</p>
-      <h2 class="section-title">Hvert rum har sin egen karakter</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          <h3 class="feature-title">Dit hjemmekontor</h3>
-          <p class="feature-text">Et dedikeret kontor med plads til dobbelte skærme og ro til dybe tanker. Adskilt fra resten af hjemmet, så arbejde og fritid aldrig blandes.</p>
-        </div>
-        <div class="feature-card">
-          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <h3 class="feature-title">Din private tagterrasse</h3>
-          <p class="feature-text">Op ad trappen og ud i det fri. Din egen tagterrasse med loungeområde, bistrobord og udsigt over byens tage. Solnedgange er inkluderet.</p>
-        </div>
-        <div class="feature-card">
-          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          <h3 class="feature-title">Tre etager af liv</h3>
-          <p class="feature-text">Seks split-levels skaber naturlige zoner. Køkken og stue flyder sammen, soveværelser har deres egen verden, og kontoret ligger uforstyrret for sig.</p>
-        </div>
-        <div class="feature-card">
-          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          <h3 class="feature-title">Walk-in garderobe</h3>
-          <p class="feature-text">Morgenerne bliver lettere med en walk-in garderobe ved soveværelset. Plads til alt — og overblik over det hele.</p>
-        </div>
+    <div class="feature-row reverse reveal">
+      <div class="feature-img-wrap">
+        <img src="assets/photos/IMG_3463.webp" alt="Walk-in garderobe" loading="lazy">
+      </div>
+      <div class="feature-content">
+        <div class="feature-number">03</div>
+        <h3 class="feature-title">Walk-in garderobe</h3>
+        <p class="feature-text">Morgenerne bliver lettere med en walk-in garderobe ved soveværelset. Plads til alt — og overblik over det hele. En luksus, der hurtigt bliver hverdag.</p>
+      </div>
+    </div>
+
+    <div class="feature-row reveal">
+      <div class="feature-img-wrap">
+        <img src="assets/photos/IMG_3461.webp" alt="Soveværelse med minimalistisk indretning" loading="lazy">
+      </div>
+      <div class="feature-content">
+        <div class="feature-number">04</div>
+        <h3 class="feature-title">Soveværelset</h3>
+        <p class="feature-text">Trukket væk fra husets liv, på sit eget rolige niveau. Store vinduer, blødt lys, og en stilhed der gør, at du faktisk sover — ikke bare lukker øjnene.</p>
       </div>
     </div>
   </section>
-
-  <!-- STAIRWELL IMAGE -->
-  <img src="assets/photos/IMG_3465.webp" alt="Trapperum set oppefra — dramatisk arkitektonisk perspektiv" class="full-image-short" loading="lazy">
 
   <!-- ARCHITECTURE -->
   <section class="arch-section" id="arkitektur">
     <img src="assets/photos/IMG_3460.webp" alt="Trappegang med split-level arkitektur" class="arch-bg" loading="lazy">
-    <div class="arch-inner">
-      <p class="section-tag">Arkitektur</p>
-      <h2 class="section-title">Bygget til at leve i, ikke bare bo i</h2>
-      <div class="section-body">
-        <p>Bella-rækkehusene er tegnet med en sjælden sans for rumlig variation. Seks split-levels fordeler sig over tre etager og skaber en oplevelse, der minder mere om et byhus end en lejlighed. Hvert niveau har sin funktion, sin stemning, sit lys.</p>
+    <div class="arch-grid">
+      <div class="arch-content reveal">
+        <span class="section-tag">Arkitektur</span>
+        <h2 class="section-title">Bygget til at leve i,<br>ikke bare bo i</h2>
+        <div class="section-body">
+          <p>Bella-rækkehusene er tegnet med en sjælden sans for rumlig variation. Seks split-levels fordeler sig over tre etager og skaber en oplevelse, der minder mere om et byhus end en lejlighed. Hvert niveau har sin funktion, sin stemning, sit lys.</p>
+        </div>
+        <div class="arch-divider"></div>
+        <div class="arch-stats">
+          <div>
+            <div class="arch-stat-num">150</div>
+            <div class="arch-stat-label">Kvadratmeter</div>
+          </div>
+          <div>
+            <div class="arch-stat-num">6</div>
+            <div class="arch-stat-label">Split-levels</div>
+          </div>
+          <div>
+            <div class="arch-stat-num">3</div>
+            <div class="arch-stat-label">Etager</div>
+          </div>
+          <div>
+            <div class="arch-stat-num">5</div>
+            <div class="arch-stat-label">Værelser</div>
+          </div>
+        </div>
       </div>
-      <div class="arch-stats">
-        <div>
-          <div class="arch-stat-num">150</div>
-          <div class="arch-stat-label">Kvadratmeter</div>
-        </div>
-        <div>
-          <div class="arch-stat-num">6</div>
-          <div class="arch-stat-label">Split-levels</div>
-        </div>
-        <div>
-          <div class="arch-stat-num">3</div>
-          <div class="arch-stat-label">Etager</div>
-        </div>
-        <div>
-          <div class="arch-stat-num">5</div>
-          <div class="arch-stat-label">Værelser</div>
-        </div>
+      <div class="arch-image reveal" style="transition-delay: 0.15s;">
+        <img src="assets/photos/IMG_3465.webp" alt="Trapperum set oppefra — dramatisk arkitektonisk perspektiv" loading="lazy">
       </div>
     </div>
   </section>
 
-  <!-- TERRACE LOUNGE IMAGE -->
-  <img src="assets/photos/terrace-lounge-clean.jpg" alt="Tagterrasse med lounge, lyskæder og planter" class="full-image-short" loading="lazy">
+  <!-- TERRACE SHOWCASE — FULL VIEWPORT -->
+  <section class="terrace-section">
+    <div class="terrace-half">
+      <img src="assets/photos/terrace-lounge-clean.jpg" alt="Tagterrasse med lounge, lyskæder og planter" loading="lazy">
+    </div>
+    <div class="terrace-half">
+      <img src="assets/photos/terrace-bistro-clean.jpg" alt="Tagterrasse med bistrobord og udsigt" loading="lazy">
+      <div class="terrace-overlay">
+        <p class="terrace-quote">Din egen himmel<br>over København</p>
+      </div>
+    </div>
+  </section>
 
   <!-- LOCATION -->
-  <section id="beliggenhed">
-    <div class="section-inner">
-      <p class="section-tag">Beliggenhed</p>
-      <h2 class="section-title">Ørestad — byen, naturen, og alt derimellem</h2>
+  <section class="location-section" id="beliggenhed">
+    <div class="location-header reveal">
+      <span class="section-tag">Beliggenhed</span>
+      <h2 class="section-title">Ørestad — byen, naturen,<br>og alt derimellem</h2>
       <div class="section-body">
         <p>Her bor du med metro lige om hjørnet, Fields og Ferring Campus som naboer, og Amager Fælled som din baghave. København er 12 minutter væk. Lufthavnen endnu tættere.</p>
       </div>
-      <div class="location-grid">
-        <div class="loc-item">
-          <span class="loc-time">2</span> <span class="loc-unit">min</span>
-          <div class="loc-dest">Bella Center Metro</div>
-          <div class="loc-mode">Gang</div>
-        </div>
-        <div class="loc-item">
-          <span class="loc-time">5</span> <span class="loc-unit">min</span>
-          <div class="loc-dest">Fields Shopping</div>
-          <div class="loc-mode">Gang</div>
-        </div>
-        <div class="loc-item">
-          <span class="loc-time">12</span> <span class="loc-unit">min</span>
-          <div class="loc-dest">Kongens Nytorv</div>
-          <div class="loc-mode">Metro</div>
-        </div>
-        <div class="loc-item">
-          <span class="loc-time">10</span> <span class="loc-unit">min</span>
-          <div class="loc-dest">Københavns Lufthavn</div>
-          <div class="loc-mode">Metro</div>
-        </div>
-        <div class="loc-item">
-          <span class="loc-time">3</span> <span class="loc-unit">min</span>
-          <div class="loc-dest">Amager Fælled</div>
-          <div class="loc-mode">Cykel</div>
-        </div>
-        <div class="loc-item">
-          <span class="loc-time">8</span> <span class="loc-unit">min</span>
-          <div class="loc-dest">Amager Strand</div>
-          <div class="loc-mode">Cykel</div>
-        </div>
+    </div>
+    <div class="location-grid reveal">
+      <div class="loc-item">
+        <span class="loc-time">2</span><span class="loc-unit"> min</span>
+        <div class="loc-dest">Bella Center Metro</div>
+        <div class="loc-mode">Gang</div>
+      </div>
+      <div class="loc-item">
+        <span class="loc-time">5</span><span class="loc-unit"> min</span>
+        <div class="loc-dest">Fields Shopping</div>
+        <div class="loc-mode">Gang</div>
+      </div>
+      <div class="loc-item">
+        <span class="loc-time">12</span><span class="loc-unit"> min</span>
+        <div class="loc-dest">Kongens Nytorv</div>
+        <div class="loc-mode">Metro</div>
+      </div>
+      <div class="loc-item">
+        <span class="loc-time">10</span><span class="loc-unit"> min</span>
+        <div class="loc-dest">Københavns Lufthavn</div>
+        <div class="loc-mode">Metro</div>
+      </div>
+      <div class="loc-item">
+        <span class="loc-time">3</span><span class="loc-unit"> min</span>
+        <div class="loc-dest">Amager Fælled</div>
+        <div class="loc-mode">Cykel</div>
+      </div>
+      <div class="loc-item">
+        <span class="loc-time">8</span><span class="loc-unit"> min</span>
+        <div class="loc-dest">Amager Strand</div>
+        <div class="loc-mode">Cykel</div>
       </div>
     </div>
   </section>
 
-  <!-- TERRACE BISTRO IMAGE -->
-  <img src="assets/photos/terrace-bistro-clean.jpg" alt="Tagterrasse med bistrobord og udsigt over kvarteret" class="full-image-short" loading="lazy">
-
-  <!-- NEIGHBORHOOD -->
-  <section style="background: #fff;">
-    <div class="section-inner">
-      <p class="section-tag">Kvarteret</p>
-      <h2 class="section-title">Et stille hjørne af en levende bydel</h2>
+  <!-- NEIGHBORHOOD — EDITORIAL -->
+  <div class="neighborhood-section">
+    <div class="neighborhood-content reveal">
+      <span class="section-tag">Kvarteret</span>
+      <h2 class="section-title">Et stille hjørne af<br>en levende bydel</h2>
       <div class="section-body">
         <p>Ørestad Syd er kvarteret, der endelig er vokset op. Gode skoler, nye caféer, og en nærhed til naturen, som er sjælden i København. Bella-rækken ligger tilbagetrukket fra vejen med fælles gårdmiljø og en stemning, der er mere landsby end storby.</p>
         <p>Her cykler dine børn til skole, du går til metroen på to minutter, og om sommeren griller du på tagterrassen mens solen går ned over Fælleden.</p>
       </div>
     </div>
-  </section>
+    <div class="neighborhood-image reveal" style="transition-delay: 0.15s;">
+      <img src="assets/photos/porch-clean.jpg" alt="Forhave og indgangsparti" loading="lazy">
+    </div>
+  </div>
 
-  <!-- GALLERY -->
+  <!-- GALLERY — HORIZONTAL SCROLL -->
   <section class="gallery-section" id="galleri">
-    <div class="section-inner">
-      <p class="section-tag">Galleri</p>
+    <div class="gallery-header reveal">
+      <span class="section-tag">Galleri</span>
       <h2 class="section-title">Se hele hjemmet</h2>
     </div>
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
-      <div class="gallery-grid">
-        <img src="assets/photos/IMG_3458.webp" alt="Køkken med trappe i baggrunden" loading="lazy">
-        <img src="assets/photos/IMG_3461.webp" alt="Soveværelse, minimalistisk indretning" loading="lazy">
-        <img src="assets/photos/IMG_3463.webp" alt="Walk-in garderobe" loading="lazy">
-        <img src="assets/photos/IMG_3464.webp" alt="Hjemmekontor med dobbelte skærme" loading="lazy">
-        <img src="assets/photos/porch-clean.jpg" alt="Forhave og gårdmiljø" loading="lazy">
-        <img src="assets/photos/IMG_3460.webp" alt="Trappegang med split-level arkitektur" loading="lazy">
-      </div>
+    <div class="gallery-track">
+      <img src="assets/photos/IMG_3458.webp" alt="Køkken med trappe i baggrunden" loading="lazy" data-gallery="0">
+      <img src="assets/photos/IMG_3459.webp" alt="Stue set oppefra med cognacfarvet sofa" loading="lazy" data-gallery="1">
+      <img src="assets/photos/IMG_0039.jpg" alt="Tagterrasse lounge — original" loading="lazy" data-gallery="2">
+      <img src="assets/photos/IMG_0040.jpg" alt="Tagterrasse bistro — original" loading="lazy" data-gallery="3">
     </div>
   </section>
 
   <!-- CTA -->
   <section class="cta-section" id="kontakt">
-    <p class="section-tag">Interesse</p>
+    <span class="section-tag">Interesse</span>
     <h2 class="section-title">Er dette dit næste hjem?</h2>
     <div class="section-body">
-      <p>Boligen sælges privat. Skriv eller ring for at aftale en fremvisning.</p>
+      <p>Boligen sælges privat. Vi viser gerne frem.</p>
     </div>
-    <a href="mailto:nicolai@herforth.dk" class="cta-btn">Kontakt os</a>
+    <div class="cta-contact">
+      <a href="mailto:nicolai.herforth@gmail.com">nicolai.herforth@gmail.com</a>
+      <a href="tel:+4531350287">+45 31 35 02 87</a>
+      <p class="cta-note">Skriv eller ring for at aftale en fremvisning</p>
+    </div>
   </section>
 
   <!-- FOOTER -->
@@ -434,10 +719,101 @@
     Doris Lessings Vej 37D, 2300 København S &mdash; 2026
   </footer>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lbClose" aria-label="Luk">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Forrige">&#8249;</button>
+    <button class="lightbox-nav lightbox-next" id="lbNext" aria-label="Næste">&#8250;</button>
+    <img src="" alt="" id="lbImg">
+    <div class="lightbox-counter" id="lbCounter"></div>
+  </div>
+
   <script>
+    // NAV SCROLL
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // HAMBURGER
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // SCROLL REVEAL
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => revealObs.observe(el));
+
+    // PARALLAX (hero image)
+    const heroImg = document.getElementById('heroImg');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          if (y < window.innerHeight) {
+            heroImg.style.transform = 'translateY(' + (y * 0.3) + 'px) scale(1.05)';
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // LIGHTBOX
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbCounter = document.getElementById('lbCounter');
+    const galleryImgs = document.querySelectorAll('.gallery-track img');
+    const gallerySrcs = Array.from(galleryImgs).map(i => i.src);
+    let lbIndex = 0;
+
+    function openLightbox(idx) {
+      lbIndex = idx;
+      updateLightbox();
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function updateLightbox() {
+      lbImg.src = gallerySrcs[lbIndex];
+      lbCounter.textContent = (lbIndex + 1) + ' / ' + gallerySrcs.length;
+    }
+    function lbPrev() { lbIndex = (lbIndex - 1 + gallerySrcs.length) % gallerySrcs.length; updateLightbox(); }
+    function lbNext() { lbIndex = (lbIndex + 1) % gallerySrcs.length; updateLightbox(); }
+
+    galleryImgs.forEach((img, i) => img.addEventListener('click', () => openLightbox(i)));
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    document.getElementById('lbPrev').addEventListener('click', lbPrev);
+    document.getElementById('lbNext').addEventListener('click', lbNext);
+    lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lbPrev();
+      if (e.key === 'ArrowRight') lbNext();
     });
   </script>
 </body>
