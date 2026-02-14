@@ -490,6 +490,23 @@
       font-style: italic; margin-top: 0.5rem;
     }
 
+    /* FLOOR PLANS */
+    .plans-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .plans-grid img {
+      width: 100%; height: auto; display: block;
+      background: #fff; padding: 1rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      cursor: pointer; transition: transform 0.3s;
+    }
+    .plans-grid img:hover { transform: scale(1.02); }
+    .plan-label {
+      text-align: center; font-size: 0.8rem; color: var(--text-secondary);
+      margin-top: 0.5rem; letter-spacing: 0.05em;
+    }
+
     /* FACTS RESPONSIVE */
     @media (max-width: 900px) {
       .facts-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
@@ -697,7 +714,7 @@
       </div>
     </div>
     <div class="neighborhood-image reveal" style="transition-delay: 0.15s;">
-      <img src="assets/photos/porch-clean.jpg" alt="Forhave og indgangsparti" loading="lazy">
+      <img src="assets/photos/outside.jpg" alt="Fælles gårdmiljø med legeplads og grønne arealer" loading="lazy">
     </div>
   </div>
 
@@ -709,11 +726,52 @@
     </div>
     <div class="gallery-hint"><span class="gallery-hint-arrow"></span> Scroll for at se mere</div>
     <div class="gallery-track">
-      <img src="assets/photos/IMG_3459-hq.jpg" alt="Stue set oppefra med cognacfarvet sofa" loading="lazy" data-gallery="0">
-      <img src="assets/photos/IMG_3458-hq.jpg" alt="Køkken med trappe i baggrunden" loading="lazy" data-gallery="1">
-      <img src="assets/photos/terrace-lounge-clean.jpg" alt="Tagterrasse lounge" loading="lazy" data-gallery="2">
-      <img src="assets/photos/terrace-bistro-clean.jpg" alt="Tagterrasse med udsigt" loading="lazy" data-gallery="3">
-      <img src="assets/photos/porch-clean.jpg" alt="Gårdhave og forhave" loading="lazy" data-gallery="4">
+      <img src="assets/photos/IMG_3459-hq.jpg" alt="Stue set oppefra med cognacfarvet sofa" loading="lazy">
+      <img src="assets/photos/dining-clean.jpg" alt="Spisestue med kobberpendler i dagslys" loading="lazy">
+      <img src="assets/photos/IMG_3458-hq.jpg" alt="Køkken med trappe i baggrunden" loading="lazy">
+      <img src="assets/photos/sink-clean.jpg" alt="Køkkenvask med Quooker" loading="lazy">
+      <img src="assets/photos/winefridge-clean.jpg" alt="Indbygget vinkøler" loading="lazy">
+      <img src="assets/photos/terrace-lounge-clean.jpg" alt="Tagterrasse lounge" loading="lazy">
+      <img src="assets/photos/terrace-bistro-clean.jpg" alt="Tagterrasse med udsigt" loading="lazy">
+      <img src="assets/photos/outside.jpg" alt="Gårdhave og fællesareal" loading="lazy">
+      <img src="assets/photos/porch-clean.jpg" alt="Forhave og indgangsparti" loading="lazy">
+    </div>
+  </section>
+
+  <!-- FLOOR PLANS -->
+  <section style="padding: 6rem 3rem; max-width: 1200px; margin: 0 auto;">
+    <span class="section-tag">Plantegninger</span>
+    <h2 class="section-title">Seks niveauer, ét hjem</h2>
+    <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary); max-width: 600px; margin-bottom: 1rem;">Hvert halvt stokværk har sin egen funktion. Fra entré og bryggers på første sal til den private tagterrasse på sjette.</p>
+    <div class="plans-grid">
+      <div>
+        <img src="assets/photos/stue-plan.jpg" alt="Stueplan — køkken og terrasse" loading="lazy" class="plan-img">
+        <p class="plan-label">Stue — Køkken & terrasse</p>
+      </div>
+      <div>
+        <img src="assets/photos/1sal-plan.jpg" alt="1. sal — entré, bryggers, toilet" loading="lazy" class="plan-img">
+        <p class="plan-label">1. sal — Entré & bryggers</p>
+      </div>
+      <div>
+        <img src="assets/photos/2sal-plan.jpg" alt="2. sal" loading="lazy" class="plan-img">
+        <p class="plan-label">2. sal</p>
+      </div>
+      <div>
+        <img src="assets/photos/3sal-plan.jpg" alt="3. sal" loading="lazy" class="plan-img">
+        <p class="plan-label">3. sal</p>
+      </div>
+      <div>
+        <img src="assets/photos/4sal-plan.jpg" alt="4. sal" loading="lazy" class="plan-img">
+        <p class="plan-label">4. sal</p>
+      </div>
+      <div>
+        <img src="assets/photos/5sal-plan.jpg" alt="5. sal" loading="lazy" class="plan-img">
+        <p class="plan-label">5. sal</p>
+      </div>
+      <div>
+        <img src="assets/photos/6sal-plan.jpg" alt="6. sal — tagterrasse" loading="lazy" class="plan-img">
+        <p class="plan-label">6. sal — Tagterrasse</p>
+      </div>
     </div>
   </section>
 
@@ -871,7 +929,7 @@
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImg');
     const lbCounter = document.getElementById('lbCounter');
-    const galleryImgs = document.querySelectorAll('.gallery-track img');
+    const galleryImgs = document.querySelectorAll('.gallery-track img, .plan-img');
     const gallerySrcs = Array.from(galleryImgs).map(i => i.src);
     let lbIndex = 0;
 
