@@ -7,797 +7,438 @@
   <meta name="description" content="Unikt rækkehus i Ørestad med privat tagterrasse, 6 split-levels og 150 m². Én af kun fem i Bella-rækken.">
   <meta property="og:title" content="Doris Lessings Vej 37D — Ørestad">
   <meta property="og:description" content="Unikt rækkehus med privat tagterrasse. 150 m², 3 etager, 6 niveauer. Én af kun fem.">
-  <meta property="og:image" content="https://doris-lessings-37d.netlify.app/assets/interior-living.jpg">
+  <meta property="og:image" content="https://doris-lessings-37d.netlify.app/assets/photos/IMG_3457.webp">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Residence",
-    "name": "Doris Lessings Vej 37D",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Doris Lessings Vej 37D",
-      "postalCode": "2300",
-      "addressLocality": "København S",
-      "addressCountry": "DK"
-    },
-    "floorSize": {"@type": "QuantitativeValue", "value": 150, "unitCode": "MTK"},
-    "numberOfRooms": 5,
-    "yearBuilt": 2017
-  }
-  </script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --black: #0a0a0a;
-      --white: #fafaf9;
-      --cream: #f5f0eb;
-      --warm: #c9b99a;
-      --warm-dark: #8a7d6b;
+      --cream: #FAF7F2;
+      --dark: #1a1a1a;
+      --gold: #B8924A;
+      --gold-light: #D4AF6A;
       --text: #1a1a1a;
-      --text-mid: #3a3a3a;
-      --text-light: #5a5a5a;
-      --accent: #1a3a2a;
+      --text-secondary: #3a3a3a;
+      --sans: 'Inter', -apple-system, sans-serif;
+      --serif: 'Playfair Display', Georgia, serif;
     }
 
-    html { scroll-behavior: smooth; font-size: 16px; }
-
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      color: var(--text);
-      background: var(--white);
-      line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    .serif { font-family: 'Playfair Display', Georgia, serif; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); color: var(--text); background: var(--cream); line-height: 1.7; font-weight: 400; -webkit-font-smoothing: antialiased; }
 
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 1.5rem 2rem;
       display: flex; justify-content: space-between; align-items: center;
-      transition: all 0.4s ease;
-      mix-blend-mode: difference;
+      padding: 1.25rem 2rem;
+      transition: background 0.3s, box-shadow 0.3s;
     }
     nav.scrolled {
-      mix-blend-mode: normal;
-      background: rgba(250,250,249,0.95);
-      backdrop-filter: blur(20px);
-      padding: 1rem 2rem;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 1px 20px rgba(0,0,0,0.08);
     }
-    nav.scrolled .nav-logo, nav.scrolled .nav-links a, nav.scrolled .lang-toggle { color: var(--text); }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem; font-weight: 400; letter-spacing: 0.02em;
-      color: white; text-decoration: none;
+    nav .logo {
+      font-family: var(--serif); font-size: 1.1rem; font-weight: 600;
+      color: #fff; text-decoration: none; letter-spacing: 0.02em;
+      transition: color 0.3s;
     }
-    .nav-links { display: flex; gap: 2rem; align-items: center; }
-    .nav-links a {
-      color: white; text-decoration: none; font-size: 0.8rem;
-      letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400;
-      transition: opacity 0.3s;
+    nav.scrolled .logo { color: var(--dark); }
+    nav .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    nav .nav-links a {
+      color: #fff; text-decoration: none; font-size: 0.85rem;
+      font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+      transition: color 0.3s; opacity: 0.95;
     }
-    .nav-links a:hover { opacity: 0.6; }
-    .lang-toggle {
-      color: white; background: none; border: 1px solid rgba(255,255,255,0.3);
-      padding: 0.4rem 0.8rem; font-size: 0.7rem; letter-spacing: 0.1em;
-      text-transform: uppercase; cursor: pointer; font-family: 'Inter', sans-serif;
-      transition: all 0.3s;
+    nav.scrolled .nav-links a { color: var(--dark); }
+    nav .nav-links a:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      nav .nav-links { display: none; }
+      nav { padding: 1rem 1.25rem; }
     }
-    nav.scrolled .lang-toggle { border-color: rgba(0,0,0,0.2); }
-    .lang-toggle:hover { background: rgba(255,255,255,0.1); }
 
     /* HERO */
     .hero {
-      height: 100vh; min-height: 700px;
-      position: relative; display: flex; align-items: flex-end;
-      background: var(--black);
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; align-items: flex-end; justify-content: flex-start;
       overflow: hidden;
     }
-    .hero-image {
-      position: absolute; inset: 0;
-      background: url('assets/interior-living.jpg') center/cover;
-      opacity: 0.7;
-      transform: scale(1.1);
-      animation: heroZoom 20s ease-out forwards;
-      will-change: transform;
+    .hero-img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
     }
-    @keyframes heroZoom { to { transform: scale(1.02); } }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.7) 30%, rgba(10,10,10,0.2) 55%, rgba(10,10,10,0.3) 100%);
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.05) 100%);
     }
     .hero-content {
-      position: relative; z-index: 2;
-      padding: 0 2rem 5rem; max-width: 900px;
+      position: relative; z-index: 2; padding: 4rem 3rem;
+      max-width: 700px;
     }
     .hero-tag {
-      font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
-      color: var(--warm); margin-bottom: 1.5rem; font-weight: 500;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold-light); margin-bottom: 1rem;
     }
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 6.5vw, 5rem);
-      font-weight: 400; color: white; line-height: 1.12;
-      margin-bottom: 1.8rem;
-      letter-spacing: -0.02em;
-      text-shadow: 0 2px 40px rgba(0,0,0,0.3);
+    .hero-title {
+      font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 400; color: #fff; line-height: 1.15; margin-bottom: 1rem;
     }
-    .hero h1 em { font-style: italic; color: var(--warm); }
-    .hero-sub {
-      font-size: 1.15rem; color: rgba(255,255,255,0.85);
-      font-weight: 300; max-width: 520px; line-height: 1.9;
+    .hero-subtitle {
+      font-size: 1.1rem; color: rgba(255,255,255,0.9); font-weight: 300;
+      line-height: 1.6; max-width: 500px;
     }
-    .hero-scroll {
-      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
-      z-index: 2; color: rgba(255,255,255,0.4); font-size: 0.65rem;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+
+    @media (max-width: 768px) {
+      .hero-content { padding: 2rem 1.5rem; }
     }
-    .hero-scroll span { animation: pulse 2s ease-in-out infinite; }
-    @keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
-    .scroll-line { width: 1px; height: 40px; background: rgba(255,255,255,0.3); }
 
     /* SECTIONS */
-    section { padding: 10rem 2rem; }
-    .container { max-width: 1100px; margin: 0 auto; }
+    section { padding: 6rem 2rem; }
+    @media (max-width: 768px) { section { padding: 4rem 1.25rem; } }
+
+    .section-inner { max-width: 900px; margin: 0 auto; }
     .section-tag {
-      font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
-      color: var(--warm-dark); margin-bottom: 1rem; font-weight: 600;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;
     }
     .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-      font-weight: 400; line-height: 1.2; margin-bottom: 2rem;
-      letter-spacing: -0.02em;
-      color: var(--text);
+      font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; color: var(--dark);
     }
+    .section-body {
+      font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary);
+      max-width: 650px;
+    }
+    .section-body p + p { margin-top: 1.25rem; }
 
-    /* SECTION DIVIDERS */
-    .section-divider {
-      display: block; width: min(60%, 500px); height: 1px;
-      background: var(--warm); margin: 0 auto;
-      opacity: 0.35;
-    }
-    .section-divider.dark { background: rgba(255,255,255,0.2); }
-
-    /* INTRO */
-    .intro { background: var(--cream); }
-    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .intro-text p { color: var(--text-mid); font-weight: 300; margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.85; }
-    .intro-text .section-tag { color: var(--warm-dark); }
-    .intro-privacy {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem; color: var(--accent); font-style: italic;
-      margin-top: 1rem; line-height: 1.6;
-    }
-    .intro-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
-    .stat-number {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem; font-weight: 400; color: var(--accent);
-      letter-spacing: -0.02em;
-    }
-    .stat-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); margin-top: 0.3rem; }
-
-    /* PHOTO */
-    .photo-section { padding: 0; }
-    .photo-full {
+    /* FULL-WIDTH IMAGE */
+    .full-image {
       width: 100%; height: 70vh; min-height: 400px;
       object-fit: cover; display: block;
+    }
+    .full-image-short {
+      width: 100%; height: 50vh; min-height: 300px;
+      object-fit: cover; display: block;
+    }
+
+    /* ARCHITECTURE - Dark section */
+    .arch-section {
+      position: relative; background: #0a0a0a; color: #fff;
+      padding: 6rem 2rem; overflow: hidden;
+    }
+    .arch-bg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.2;
+    }
+    .arch-inner {
+      position: relative; z-index: 2; max-width: 900px; margin: 0 auto;
+    }
+    .arch-section .section-tag { color: var(--gold-light); }
+    .arch-section .section-title { color: #fff; }
+    .arch-section .section-body { color: rgba(255,255,255,0.75); }
+    .arch-stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 2.5rem; margin-top: 3rem;
+    }
+    .arch-stat-num {
+      font-family: var(--serif); font-size: 3.5rem; font-weight: 400;
+      color: var(--gold-light); line-height: 1;
+    }
+    .arch-stat-label {
+      font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem;
+      letter-spacing: 0.04em;
     }
 
     /* FEATURES */
     .features-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 3rem; margin-top: 4rem;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem; margin-top: 3rem;
     }
-    .feature {
-      text-align: center; padding: 2.5rem 1.5rem;
-      border-radius: 2px;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    .feature:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    .feature-card {
+      padding: 2rem 0; border-top: 1px solid rgba(0,0,0,0.08);
     }
     .feature-icon {
-      width: 48px; height: 48px; margin: 0 auto 1.5rem;
-      stroke: var(--warm-dark); stroke-width: 1.2;
+      width: 32px; height: 32px; margin-bottom: 1rem; color: var(--gold);
     }
-    .feature h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem; font-weight: 400; margin-bottom: 0.8rem;
-      letter-spacing: -0.01em;
+    .feature-title {
+      font-family: var(--serif); font-size: 1.3rem; margin-bottom: 0.75rem;
+      color: var(--dark);
     }
-    .feature p { font-size: 0.95rem; color: var(--text-light); font-weight: 300; line-height: 1.8; }
-
-    /* PERFECT FOR */
-    .perfect-for { background: var(--cream); }
-    .perfect-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 3rem; margin-top: 4rem;
+    .feature-text {
+      font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary);
     }
-    .perfect-card {
-      padding: 2.5rem 2rem;
-      border-top: 2px solid var(--warm);
-      background: rgba(255,255,255,0.5);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    .perfect-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-    }
-    .perfect-icon {
-      width: 40px; height: 40px; margin-bottom: 1.5rem; display: block;
-      stroke: var(--warm-dark); stroke-width: 1.2; fill: none;
-    }
-    .perfect-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem; font-weight: 400; margin-bottom: 0.7rem;
-      letter-spacing: -0.01em;
-      color: var(--text);
-    }
-    .perfect-card p { font-size: 0.95rem; color: var(--text-light); font-weight: 300; line-height: 1.8; }
-
-    /* ARCHITECTURE */
-    .architecture { background: var(--black); color: white; }
-    .architecture .section-tag { color: var(--warm); }
-    .architecture .section-title { color: white; }
-    .arch-text { color: rgba(255,255,255,0.65); font-weight: 300; max-width: 700px; font-size: 1.1rem; margin-bottom: 0.8rem; line-height: 1.85; }
-    .arch-privacy {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem; color: var(--warm); font-style: italic;
-      margin-top: 1.5rem;
-    }
-    .levels-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 1px; margin-top: 5rem; background: rgba(255,255,255,0.06);
-    }
-    .level {
-      background: var(--black); padding: 3.5rem 3rem;
-      border-left: 3px solid transparent;
-      transition: all 0.4s ease;
-    }
-    .level:hover {
-      background: rgba(255,255,255,0.03);
-      border-left-color: var(--warm);
-    }
-    .level-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem; color: var(--warm); margin-bottom: 0.5rem;
-      line-height: 1; letter-spacing: -0.02em;
-    }
-    .level-line {
-      width: 30px; height: 1px; background: var(--warm); opacity: 0.5;
-      margin: 1rem 0;
-    }
-    .level h4 { font-weight: 400; font-size: 1.15rem; margin-bottom: 0.7rem; letter-spacing: -0.01em; }
-    .level p { font-size: 0.9rem; color: rgba(255,255,255,0.5); font-weight: 300; line-height: 1.7; }
 
     /* LOCATION */
-    .location { background: var(--cream); }
-    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
-    .location-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 2rem; }
-    .location-item .loc-time {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem; color: var(--accent); min-width: 60px;
-      letter-spacing: -0.02em;
+    .location-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem; margin-top: 3rem;
     }
-    .location-item h4 { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.3rem; color: var(--text); }
-    .location-item p { font-size: 0.9rem; color: var(--text-light); font-weight: 300; }
+    .loc-item {
+      padding: 1.5rem 0; border-top: 1px solid rgba(0,0,0,0.08);
+    }
+    .loc-time {
+      font-family: var(--serif); font-size: 2rem; color: var(--gold);
+      font-weight: 400;
+    }
+    .loc-unit {
+      font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;
+    }
+    .loc-dest {
+      font-size: 0.95rem; color: var(--dark); margin-top: 0.25rem; font-weight: 500;
+    }
+    .loc-mode {
+      font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.15rem;
+    }
 
-    /* NEIGHBORHOOD */
-    .neighborhood {
-      background: var(--white);
-      text-align: center;
-      position: relative;
+    /* GALLERY */
+    .gallery-section { background: #fff; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin-top: 3rem;
     }
-    .neighborhood::before {
-      content: '';
-      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: min(60%, 500px); height: 1px;
-      background: var(--warm); opacity: 0.25;
+    .gallery-grid img {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+      transition: transform 0.4s;
     }
-    .neighborhood .section-title { margin-bottom: 2rem; }
-    .neighborhood-text {
-      max-width: 620px; margin: 0 auto;
-      font-size: 1.1rem; color: var(--text-mid); font-weight: 300; line-height: 1.9;
-      margin-bottom: 2.5rem;
+    .gallery-grid img:hover { transform: scale(1.02); }
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    .neighborhood-pullquote {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-style: italic;
-      color: var(--accent);
-      max-width: 550px;
-      margin: 0 auto;
-      line-height: 1.5;
-      letter-spacing: -0.01em;
-      position: relative;
-      padding: 2rem 0;
-    }
-    .neighborhood-pullquote::before {
-      content: '';
-      display: block; width: 40px; height: 1px;
-      background: var(--warm); margin: 0 auto 2rem;
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
     }
 
     /* CTA */
     .cta-section {
-      background: var(--accent); color: white;
-      text-align: center; padding: 10rem 2rem;
+      background: var(--dark); color: #fff; text-align: center;
+      padding: 6rem 2rem;
     }
-    .cta-section .section-tag { color: var(--warm); }
-    .cta-section .section-title {
-      color: white; margin-bottom: 1rem;
-      font-size: clamp(2.4rem, 5vw, 3.5rem);
-    }
-    .cta-price {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      color: var(--warm); margin: 2.5rem 0 1rem;
-      letter-spacing: -0.02em;
-      line-height: 1;
-    }
-    .cta-sub { color: rgba(255,255,255,0.6); font-weight: 300; margin-bottom: 3rem; font-size: 1rem; }
-    .cta-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+    .cta-section .section-tag { color: var(--gold-light); }
+    .cta-section .section-title { color: #fff; }
+    .cta-section .section-body { color: rgba(255,255,255,0.7); margin: 0 auto; }
     .cta-btn {
-      display: inline-block; padding: 1.1rem 3rem;
-      border: 1px solid var(--warm); color: var(--warm);
-      text-decoration: none; font-size: 0.8rem;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      transition: all 0.35s ease;
-      font-family: 'Inter', sans-serif;
+      display: inline-block; margin-top: 2.5rem;
+      padding: 1rem 2.5rem; border: 1px solid var(--gold);
+      color: var(--gold); text-decoration: none; font-size: 0.85rem;
+      font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      transition: all 0.3s;
     }
-    .cta-btn:hover {
-      background: var(--warm); color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(201,185,154,0.3);
-    }
-    .cta-btn-secondary {
-      display: inline-block; padding: 1.1rem 3rem;
-      border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.7);
-      text-decoration: none; font-size: 0.8rem;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      transition: all 0.35s ease;
-      font-family: 'Inter', sans-serif;
-    }
-    .cta-btn-secondary:hover {
-      border-color: rgba(255,255,255,0.6); color: white;
-      transform: translateY(-2px);
-    }
+    .cta-btn:hover { background: var(--gold); color: #fff; }
 
     /* FOOTER */
     footer {
       padding: 3rem 2rem; text-align: center;
-      font-size: 0.75rem; color: var(--text-light); letter-spacing: 0.05em;
-    }
-
-    /* LANGUAGE TOGGLE */
-    [data-lang="en"] { display: none; }
-    body.lang-en [data-lang="da"] { display: none; }
-    body.lang-en [data-lang="en"] { display: block; }
-    body.lang-en [data-lang="en"].inline { display: inline; }
-
-    /* ANIMATIONS */
-    .reveal {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      section { padding: 6rem 1.5rem; }
-      .intro-grid, .location-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .features-grid, .perfect-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .levels-grid { grid-template-columns: 1fr; }
-      .nav-links a.desktop-only { display: none; }
-      .hero-content { padding: 0 1.5rem 3rem; }
-      .intro-stats { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-      .cta-buttons { flex-direction: column; align-items: center; }
+      font-size: 0.8rem; color: var(--text-secondary);
+      border-top: 1px solid rgba(0,0,0,0.06);
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <a href="#" class="nav-logo">37D</a>
-  <div class="nav-links">
-    <a href="#features" class="desktop-only" data-lang="da">Boligen</a>
-    <a href="#features" class="desktop-only" data-lang="en">The Home</a>
-    <a href="#architecture" class="desktop-only" data-lang="da">Arkitektur</a>
-    <a href="#architecture" class="desktop-only" data-lang="en">Architecture</a>
-    <a href="#location" class="desktop-only" data-lang="da">Beliggenhed</a>
-    <a href="#location" class="desktop-only" data-lang="en">Location</a>
-    <a href="#contact" data-lang="da">Kontakt</a>
-    <a href="#contact" data-lang="en">Contact</a>
-    <button class="lang-toggle" onclick="toggleLang()">EN</button>
-  </div>
-</nav>
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="logo">DLV 37D</a>
+    <ul class="nav-links">
+      <li><a href="#boligen">Boligen</a></li>
+      <li><a href="#arkitektur">Arkitektur</a></li>
+      <li><a href="#beliggenhed">Beliggenhed</a></li>
+      <li><a href="#galleri">Galleri</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-image" id="heroImage"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="hero-tag" data-lang="da">En af kun fem — Orestad, Kobenhavn</p>
-    <p class="hero-tag" data-lang="en">One of only five — Orestad, Copenhagen</p>
-    <h1 data-lang="da">Seks niveauer.<br>En <em>unik</em> bolig.</h1>
-    <h1 data-lang="en">Six levels.<br>One <em>unique</em> home.</h1>
-    <p class="hero-sub" data-lang="da">To hjemmekontorer. En tagterrasse. Et kvarter hvor bornene leger udenfor.</p>
-    <p class="hero-sub" data-lang="en">Two home offices. A rooftop terrace. A neighborhood where kids play outside.</p>
-  </div>
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <img src="assets/photos/IMG_3457.webp" alt="Køkken og spisestue med åbne terrassedøre og kobberpendler" class="hero-img" loading="eager">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Ørestad Syd, København</p>
+      <h1 class="hero-title">Doris Lessings Vej 37D</h1>
+      <p class="hero-subtitle">150 m² rækkehus over tre etager med privat tagterrasse. Én af kun fem i Bella-rækken.</p>
+    </div>
+  </section>
 
-<!-- INTRO -->
-<section class="intro">
-  <div class="container">
-    <div class="intro-grid">
-      <div class="intro-text reveal">
-        <p class="section-tag" data-lang="da">Historien</p>
-        <p class="section-tag" data-lang="en">The Story</p>
-        <h2 class="section-title" data-lang="da">Vi ville have plads til at leve —<br>ikke bare eksistere.</h2>
-        <h2 class="section-title" data-lang="en">We wanted space to live —<br>not just exist.</h2>
-        <p data-lang="da">I en lejlighed horer alle alt. Her har hver person sin egen zone. Tre etager, seks split-levels — et helt hus hvor man kan arbejde, lege og traekke sig tilbage uden at sidde ovenpa hinanden.</p>
-        <p data-lang="en">In an apartment, everyone hears everything. Here, every person has their own zone. Three floors, six split-levels — a full house where you can work, play, and retreat without being on top of each other.</p>
-        <p data-lang="da">Doris Lessings Vej 37D er et af kun fem raekkehuse i Bella-raekken — og det eneste med denne planlosning. 150 m&#178; med privat tagterrasse, til en pris der matcher en 90 m&#178; lejlighed pa Vesterbro.</p>
-        <p data-lang="en">Doris Lessings Vej 37D is one of only five townhouses in the Bella row — and the only one with this layout. 150 m&#178; with a private rooftop terrace, at a price that matches a 90 m&#178; apartment in Vesterbro.</p>
+  <!-- INTRO -->
+  <section id="boligen">
+    <div class="section-inner">
+      <p class="section-tag">Dit nye hjem</p>
+      <h2 class="section-title">Forestil dig et hjem, der vokser med dig</h2>
+      <div class="section-body">
+        <p>Her står du i dit eget rækkehus midt i København. Lyset falder ind gennem de store terrassedøre, og duften af kaffe blander sig med frisk luft fra din private tagterrasse. Tre etager, seks niveauer, 150 kvadratmeter — alt dit.</p>
+        <p>Doris Lessings Vej 37D er ikke bare en bolig. Det er det sted, hvor hverdagen folder sig ud over split-level etager, hvor børnene leger på deres eget niveau, og hvor du trækker dig op på taget med et glas vin og udsigt over hele Ørestad.</p>
       </div>
-      <div class="intro-stats reveal reveal-delay-2">
+    </div>
+  </section>
+
+  <!-- LIVING ROOM IMAGE -->
+  <img src="assets/photos/IMG_3459.webp" alt="Stue set oppefra med cognacfarvet sofa og grønne puder" class="full-image" loading="lazy">
+
+  <!-- FEATURES -->
+  <section style="background: #fff;">
+    <div class="section-inner">
+      <p class="section-tag">Rummene</p>
+      <h2 class="section-title">Hvert rum har sin egen karakter</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <h3 class="feature-title">Dit hjemmekontor</h3>
+          <p class="feature-text">Et dedikeret kontor med plads til dobbelte skærme og ro til dybe tanker. Adskilt fra resten af hjemmet, så arbejde og fritid aldrig blandes.</p>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <h3 class="feature-title">Din private tagterrasse</h3>
+          <p class="feature-text">Op ad trappen og ud i det fri. Din egen tagterrasse med loungeområde, bistrobord og udsigt over byens tage. Solnedgange er inkluderet.</p>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <h3 class="feature-title">Tre etager af liv</h3>
+          <p class="feature-text">Seks split-levels skaber naturlige zoner. Køkken og stue flyder sammen, soveværelser har deres egen verden, og kontoret ligger uforstyrret for sig.</p>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <h3 class="feature-title">Walk-in garderobe</h3>
+          <p class="feature-text">Morgenerne bliver lettere med en walk-in garderobe ved soveværelset. Plads til alt — og overblik over det hele.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAIRWELL IMAGE -->
+  <img src="assets/photos/IMG_3465.webp" alt="Trapperum set oppefra — dramatisk arkitektonisk perspektiv" class="full-image-short" loading="lazy">
+
+  <!-- ARCHITECTURE -->
+  <section class="arch-section" id="arkitektur">
+    <img src="assets/photos/IMG_3460.webp" alt="Trappegang med split-level arkitektur" class="arch-bg" loading="lazy">
+    <div class="arch-inner">
+      <p class="section-tag">Arkitektur</p>
+      <h2 class="section-title">Bygget til at leve i, ikke bare bo i</h2>
+      <div class="section-body">
+        <p>Bella-rækkehusene er tegnet med en sjælden sans for rumlig variation. Seks split-levels fordeler sig over tre etager og skaber en oplevelse, der minder mere om et byhus end en lejlighed. Hvert niveau har sin funktion, sin stemning, sit lys.</p>
+      </div>
+      <div class="arch-stats">
         <div>
-          <div class="stat-number">150</div>
-          <div class="stat-label">m&#178; bolig</div>
+          <div class="arch-stat-num">150</div>
+          <div class="arch-stat-label">Kvadratmeter</div>
         </div>
         <div>
-          <div class="stat-number">6</div>
-          <div class="stat-label" data-lang="da">Niveauer</div>
-          <div class="stat-label" data-lang="en">Levels</div>
+          <div class="arch-stat-num">6</div>
+          <div class="arch-stat-label">Split-levels</div>
         </div>
         <div>
-          <div class="stat-number">5</div>
-          <div class="stat-label" data-lang="da">Vaerelser</div>
-          <div class="stat-label" data-lang="en">Rooms</div>
+          <div class="arch-stat-num">3</div>
+          <div class="arch-stat-label">Etager</div>
         </div>
         <div>
-          <div class="stat-number">1</div>
-          <div class="stat-label" data-lang="da">Tagterrasse</div>
-          <div class="stat-label" data-lang="en">Rooftop</div>
+          <div class="arch-stat-num">5</div>
+          <div class="arch-stat-label">Værelser</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FULL PHOTO -->
-<div class="photo-section">
-  <img src="assets/interior-living.jpg" alt="Stue med dobbelt hojde og lyst skandinavisk interior" class="photo-full" loading="lazy">
-</div>
+  <!-- TERRACE LOUNGE IMAGE -->
+  <img src="assets/photos/terrace-lounge-clean.jpg" alt="Tagterrasse med lounge, lyskæder og planter" class="full-image-short" loading="lazy">
 
-<!-- DIVIDER -->
-<div style="padding: 2rem 0;"><div class="section-divider"></div></div>
-
-<!-- FEATURES -->
-<section id="features">
-  <div class="container">
-    <div class="reveal" style="text-align:center; max-width:600px; margin:0 auto;">
-      <p class="section-tag" data-lang="da">Boligen</p>
-      <p class="section-tag" data-lang="en">The Home</p>
-      <h2 class="section-title" data-lang="da">Designet til at leve i — ikke bare bo i</h2>
-      <h2 class="section-title" data-lang="en">Designed for living — not just residing</h2>
-    </div>
-    <div class="features-grid">
-      <div class="feature reveal reveal-delay-1">
-        <svg class="feature-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M24 4L4 18v26h16V30h8v14h16V18L24 4z" stroke="currentColor" fill="none"/>
-        </svg>
-        <h3 data-lang="da">Privat tagterrasse</h3>
-        <h3 data-lang="en">Private rooftop</h3>
-        <p data-lang="da">Den eneste bolig pa Doris Lessings Vej med tagterrasse. Nyd morgenkaffeen over Orestads skyline.</p>
-        <p data-lang="en">The only home on Doris Lessings Vej with a rooftop terrace. Enjoy morning coffee above Orestad's skyline.</p>
+  <!-- LOCATION -->
+  <section id="beliggenhed">
+    <div class="section-inner">
+      <p class="section-tag">Beliggenhed</p>
+      <h2 class="section-title">Ørestad — byen, naturen, og alt derimellem</h2>
+      <div class="section-body">
+        <p>Her bor du med metro lige om hjørnet, Fields og Ferring Campus som naboer, og Amager Fælled som din baghave. København er 12 minutter væk. Lufthavnen endnu tættere.</p>
       </div>
-      <div class="feature reveal reveal-delay-2">
-        <svg class="feature-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="6" y="6" width="36" height="36" rx="2" stroke="currentColor" fill="none"/>
-          <line x1="6" y1="18" x2="42" y2="18" stroke="currentColor"/>
-          <line x1="6" y1="30" x2="42" y2="30" stroke="currentColor"/>
-          <line x1="24" y1="6" x2="24" y2="42" stroke="currentColor"/>
-        </svg>
-        <h3 data-lang="da">Seks zoner</h3>
-        <h3 data-lang="en">Six zones</h3>
-        <p data-lang="da">Split-level arkitekturen skaber seks distinkte niveauer — hvert med sin egen karakter og funktion.</p>
-        <p data-lang="en">Split-level architecture creates six distinct zones — each with its own character and purpose.</p>
-      </div>
-      <div class="feature reveal reveal-delay-3">
-        <svg class="feature-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="24" cy="24" r="18" stroke="currentColor" fill="none"/>
-          <path d="M24 6c0 18-12 18-12 36" stroke="currentColor" fill="none"/>
-          <path d="M24 6c0 18 12 18 12 36" stroke="currentColor" fill="none"/>
-        </svg>
-        <h3 data-lang="da">Fri udsigt</h3>
-        <h3 data-lang="en">Open views</h3>
-        <p data-lang="da">Terrassen vender mod det abne — ingen modstaende bygning. Bare himmel, gront og plads til at traekke vejret.</p>
-        <p data-lang="en">The terrace faces open space — no opposing building. Just sky, green, and room to breathe.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DIVIDER -->
-<div style="padding: 2rem 0;"><div class="section-divider"></div></div>
-
-<!-- PERFECT FOR -->
-<section class="perfect-for">
-  <div class="container">
-    <div class="reveal" style="text-align:center; max-width:600px; margin:0 auto;">
-      <p class="section-tag" data-lang="da">Perfekt til</p>
-      <p class="section-tag" data-lang="en">Perfect for</p>
-      <h2 class="section-title" data-lang="da">Hvem er huset til?</h2>
-      <h2 class="section-title" data-lang="en">Who is this home for?</h2>
-    </div>
-    <div class="perfect-grid">
-      <div class="perfect-card reveal reveal-delay-1">
-        <svg class="perfect-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="8" width="34" height="22" rx="2" stroke="currentColor" fill="none"/>
-          <line x1="3" y1="26" x2="37" y2="26" stroke="currentColor"/>
-          <line x1="16" y1="30" x2="24" y2="30" stroke="currentColor"/>
-          <rect x="8" y="12" width="10" height="10" rx="1" stroke="currentColor" fill="none" opacity="0.5"/>
-        </svg>
-        <h3 data-lang="da">Par der arbejder hjemmefra</h3>
-        <h3 data-lang="en">Couples who work from home</h3>
-        <p data-lang="da">To separate kontorer pa hvert sit niveau. Ingen kaemper om spisebordet.</p>
-        <p data-lang="en">Two separate offices on different levels. No fighting over the dining table.</p>
-      </div>
-      <div class="perfect-card reveal reveal-delay-2">
-        <svg class="perfect-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="14" cy="12" r="4" stroke="currentColor" fill="none"/>
-          <circle cx="26" cy="12" r="4" stroke="currentColor" fill="none"/>
-          <circle cx="20" cy="22" r="3" stroke="currentColor" fill="none"/>
-          <path d="M6 32c0-5 4-8 8-8h0c2 2 6 2 8 0h0c4 0 8 3 8 8" stroke="currentColor" fill="none"/>
-        </svg>
-        <h3 data-lang="da">Unge familier med 1-2 born</h3>
-        <h3 data-lang="en">Young families with 1-2 kids</h3>
-        <p data-lang="da">Eget niveau til bornene, legeplads lige udenfor doren.</p>
-        <p data-lang="en">A dedicated level for the kids, playground right outside the door.</p>
-      </div>
-      <div class="perfect-card reveal reveal-delay-3">
-        <svg class="perfect-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 4L4 16v20h12V26h8v10h12V16L20 4z" stroke="currentColor" fill="none"/>
-          <line x1="4" y1="36" x2="0" y2="36" stroke="currentColor"/>
-          <line x1="40" y1="36" x2="36" y2="36" stroke="currentColor"/>
-          <path d="M16 36v-6h8v6" stroke="currentColor" fill="none" opacity="0.5"/>
-        </svg>
-        <h3 data-lang="da">Dem der vil have hus til lejlighedspris</h3>
-        <h3 data-lang="en">Those who want a house at apartment prices</h3>
-        <p data-lang="da">150 m&#178; for prisen af 90 m&#178; i Vesterbro.</p>
-        <p data-lang="en">150 m&#178; for the price of 90 m&#178; in Vesterbro.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ARCHITECTURE -->
-<section id="architecture" class="architecture">
-  <div class="container">
-    <div class="reveal">
-      <p class="section-tag">Arkitektur / Architecture</p>
-      <h2 class="section-title" data-lang="da">Seks niveauer. Seks verdener.</h2>
-      <h2 class="section-title" data-lang="en">Six levels. Six worlds.</h2>
-      <p class="arch-text" data-lang="da">Hvor traditionelle raekkehuse gentager den samme etageplan, udnytter 37D split-level princippet til at skabe flow mellem private og sociale rum. Hvert halvt niveau forskyder perspektivet.</p>
-      <p class="arch-text" data-lang="en">Where traditional townhouses repeat the same floor plan, 37D uses the split-level principle to create flow between private and social spaces. Each half-level shifts the perspective.</p>
-      <p class="arch-privacy" data-lang="da">Hvert niveau giver privatliv. Ingen sidder ovenpa hinanden.</p>
-      <p class="arch-privacy" data-lang="en">Each level provides privacy. No one is on top of each other.</p>
-    </div>
-    <div class="levels-grid">
-      <div class="level reveal reveal-delay-1">
-        <div class="level-num">01</div>
-        <div class="level-line"></div>
-        <h4 data-lang="da">Entre & kokken</h4>
-        <h4 data-lang="en">Entry & kitchen</h4>
-        <p data-lang="da">Ankomsten. Rummeligt, organiseret, med direkte adgang til kokkenet.</p>
-        <p data-lang="en">The arrival. Spacious, organized, with direct access to the kitchen.</p>
-      </div>
-      <div class="level reveal reveal-delay-2">
-        <div class="level-num">02</div>
-        <div class="level-line"></div>
-        <h4 data-lang="da">Stue med dobbelt hojde</h4>
-        <h4 data-lang="en">Double-height living room</h4>
-        <p data-lang="da">Dramatisk rumhojde. Lys fra to sider.</p>
-        <p data-lang="en">Dramatic ceiling height. Light from two sides.</p>
-      </div>
-      <div class="level reveal reveal-delay-3">
-        <div class="level-num">03</div>
-        <div class="level-line"></div>
-        <h4 data-lang="da">Hjemmekontor / privat rum</h4>
-        <h4 data-lang="en">Home office / private room</h4>
-        <p data-lang="da">Dit eget arbejdsrum. Lukket dor, fuld koncentration.</p>
-        <p data-lang="en">Your own workspace. Closed door, full focus.</p>
-      </div>
-      <div class="level reveal reveal-delay-4">
-        <div class="level-num">04</div>
-        <div class="level-line"></div>
-        <h4 data-lang="da">Hjemmekontor / walk-in</h4>
-        <h4 data-lang="en">Home office / walk-in closet</h4>
-        <p data-lang="da">Andet kontor eller walk-in. Fleksibelt rum pa eget niveau.</p>
-        <p data-lang="en">Second office or walk-in closet. Flexible room on its own level.</p>
-      </div>
-      <div class="level reveal reveal-delay-5">
-        <div class="level-num">05</div>
-        <div class="level-line"></div>
-        <h4 data-lang="da">Sovevaerelse & bornevaerelse</h4>
-        <h4 data-lang="en">Bedroom & children's room</h4>
-        <p data-lang="da">Privat zone. Ro og tilbagetraekning for hele familien.</p>
-        <p data-lang="en">Private zone. Peace and retreat for the whole family.</p>
-      </div>
-      <div class="level reveal">
-        <div class="level-num">06</div>
-        <div class="level-line"></div>
-        <h4 data-lang="da">Tagterrasse</h4>
-        <h4 data-lang="en">Rooftop terrace</h4>
-        <p data-lang="da">Din private himmel. Orestads tage under dig.</p>
-        <p data-lang="en">Your private sky. Orestad's rooftops below you.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LOCATION -->
-<section id="location" class="location">
-  <div class="container">
-    <div class="reveal">
-      <p class="section-tag" data-lang="da">Beliggenhed</p>
-      <p class="section-tag" data-lang="en">Location</p>
-      <h2 class="section-title" data-lang="da">Hvor byen moder naturen</h2>
-      <h2 class="section-title" data-lang="en">Where city meets nature</h2>
-    </div>
-    <div class="location-grid">
-      <div class="reveal">
-        <div class="location-item">
-          <div class="loc-time">2'</div>
-          <div>
-            <h4>Bella Center Metro</h4>
-            <p data-lang="da">Til fods. Direkte linje til centrum.</p>
-            <p data-lang="en">On foot. Direct line to city center.</p>
-          </div>
+      <div class="location-grid">
+        <div class="loc-item">
+          <span class="loc-time">2</span> <span class="loc-unit">min</span>
+          <div class="loc-dest">Bella Center Metro</div>
+          <div class="loc-mode">Gang</div>
         </div>
-        <div class="location-item">
-          <div class="loc-time">12'</div>
-          <div>
-            <h4>Kongens Nytorv</h4>
-            <p data-lang="da">Med metroen. Midt i Kobenhavn.</p>
-            <p data-lang="en">By metro. Heart of Copenhagen.</p>
-          </div>
+        <div class="loc-item">
+          <span class="loc-time">5</span> <span class="loc-unit">min</span>
+          <div class="loc-dest">Fields Shopping</div>
+          <div class="loc-mode">Gang</div>
         </div>
-        <div class="location-item">
-          <div class="loc-time">5'</div>
-          <div>
-            <h4>Fields</h4>
-            <p data-lang="da">Skandinaviens storste shoppingcenter.</p>
-            <p data-lang="en">Scandinavia's largest shopping center.</p>
-          </div>
+        <div class="loc-item">
+          <span class="loc-time">12</span> <span class="loc-unit">min</span>
+          <div class="loc-dest">Kongens Nytorv</div>
+          <div class="loc-mode">Metro</div>
         </div>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <div class="location-item">
-          <div class="loc-time">3'</div>
-          <div>
-            <h4>Amager Faelled</h4>
-            <p data-lang="da">Vild natur. Lige om hjornet.</p>
-            <p data-lang="en">Wild nature. Right around the corner.</p>
-          </div>
+        <div class="loc-item">
+          <span class="loc-time">10</span> <span class="loc-unit">min</span>
+          <div class="loc-dest">Københavns Lufthavn</div>
+          <div class="loc-mode">Metro</div>
         </div>
-        <div class="location-item">
-          <div class="loc-time">8'</div>
-          <div>
-            <h4 data-lang="da">Internationale skoler</h4>
-            <h4 data-lang="en">International schools</h4>
-            <p data-lang="da">CIS og YCBS i naeromradet.</p>
-            <p data-lang="en">CIS and YCBS in the neighborhood.</p>
-          </div>
+        <div class="loc-item">
+          <span class="loc-time">3</span> <span class="loc-unit">min</span>
+          <div class="loc-dest">Amager Fælled</div>
+          <div class="loc-mode">Cykel</div>
         </div>
-        <div class="location-item">
-          <div class="loc-time">15'</div>
-          <div>
-            <h4 data-lang="da">Lufthavnen</h4>
-            <h4 data-lang="en">Airport</h4>
-            <p data-lang="da">CPH. To stop med metroen.</p>
-            <p data-lang="en">CPH. Two metro stops away.</p>
-          </div>
+        <div class="loc-item">
+          <span class="loc-time">8</span> <span class="loc-unit">min</span>
+          <div class="loc-dest">Amager Strand</div>
+          <div class="loc-mode">Cykel</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- NEIGHBORHOOD -->
-<section class="neighborhood">
-  <div class="container reveal">
-    <p class="section-tag" data-lang="da">Kvarteret</p>
-    <p class="section-tag" data-lang="en">The Neighborhood</p>
-    <h2 class="section-title" data-lang="da">Mere end en adresse</h2>
-    <h2 class="section-title" data-lang="en">More than an address</h2>
-    <p class="neighborhood-text" data-lang="da">Orestad er ikke laengere et loft om fremtiden. Det er et kvarter med liv, faellesskab og gront sa langt ojet raekker. Naboer hilser pa hinanden. Born cykler til skole. Amager Faelled begynder hvor vejen ender.</p>
-    <p class="neighborhood-text" data-lang="en">Orestad is no longer a promise of the future. It's a neighborhood with life, community, and green as far as the eye can see. Neighbors greet each other. Kids bike to school. Amager Faelled begins where the road ends.</p>
-    <div class="neighborhood-pullquote" data-lang="da">En gade hvor bornene leger</div>
-    <div class="neighborhood-pullquote" data-lang="en">A street where the children play</div>
-  </div>
-</section>
+  <!-- TERRACE BISTRO IMAGE -->
+  <img src="assets/photos/terrace-bistro-clean.jpg" alt="Tagterrasse med bistrobord og udsigt over kvarteret" class="full-image-short" loading="lazy">
 
-<!-- CTA -->
-<section id="contact" class="cta-section">
-  <div class="container reveal">
-    <p class="section-tag" data-lang="da">Udbudspris</p>
-    <p class="section-tag" data-lang="en">Asking Price</p>
-    <div class="cta-price">8.495.000 DKK</div>
-    <p class="cta-sub" data-lang="da">Doris Lessings Vej 37D - 2300 Kobenhavn S - 150 m&#178; - 5 vaerelser</p>
-    <p class="cta-sub" data-lang="en">Doris Lessings Vej 37D - 2300 Copenhagen S - 150 m&#178; - 5 rooms</p>
-    <h2 class="section-title" data-lang="da">Klar til at se den?</h2>
-    <h2 class="section-title" data-lang="en">Ready to see it?</h2>
-    <br>
-    <div class="cta-buttons">
-      <a href="mailto:nicolai.herforth@gmail.com?subject=Doris%20Lessings%20Vej%2037D%20-%20Fremvisning" class="cta-btn" data-lang="da">Book en fremvisning</a>
-      <a href="mailto:nicolai.herforth@gmail.com?subject=Doris%20Lessings%20Vej%2037D%20-%20Viewing" class="cta-btn" data-lang="en">Book a viewing</a>
-      <a href="tel:+4531350287" class="cta-btn-secondary" data-lang="da">Ring direkte</a>
-      <a href="tel:+4531350287" class="cta-btn-secondary" data-lang="en">Call directly</a>
+  <!-- NEIGHBORHOOD -->
+  <section style="background: #fff;">
+    <div class="section-inner">
+      <p class="section-tag">Kvarteret</p>
+      <h2 class="section-title">Et stille hjørne af en levende bydel</h2>
+      <div class="section-body">
+        <p>Ørestad Syd er kvarteret, der endelig er vokset op. Gode skoler, nye caféer, og en nærhed til naturen, som er sjælden i København. Bella-rækken ligger tilbagetrukket fra vejen med fælles gårdmiljø og en stemning, der er mere landsby end storby.</p>
+        <p>Her cykler dine børn til skole, du går til metroen på to minutter, og om sommeren griller du på tagterrassen mens solen går ned over Fælleden.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <p>Doris Lessings Vej 37D - Orestad - Kobenhavn S - 2026</p>
-</footer>
+  <!-- GALLERY -->
+  <section class="gallery-section" id="galleri">
+    <div class="section-inner">
+      <p class="section-tag">Galleri</p>
+      <h2 class="section-title">Se hele hjemmet</h2>
+    </div>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+      <div class="gallery-grid">
+        <img src="assets/photos/IMG_3458.webp" alt="Køkken med trappe i baggrunden" loading="lazy">
+        <img src="assets/photos/IMG_3461.webp" alt="Soveværelse, minimalistisk indretning" loading="lazy">
+        <img src="assets/photos/IMG_3463.webp" alt="Walk-in garderobe" loading="lazy">
+        <img src="assets/photos/IMG_3464.webp" alt="Hjemmekontor med dobbelte skærme" loading="lazy">
+        <img src="assets/photos/porch-clean.jpg" alt="Forhave og gårdmiljø" loading="lazy">
+        <img src="assets/photos/IMG_3460.webp" alt="Trappegang med split-level arkitektur" loading="lazy">
+      </div>
+    </div>
+  </section>
 
-<script>
-// Language toggle
-function toggleLang() {
-  document.body.classList.toggle('lang-en');
-  const btn = document.querySelector('.lang-toggle');
-  btn.textContent = document.body.classList.contains('lang-en') ? 'DA' : 'EN';
-}
+  <!-- CTA -->
+  <section class="cta-section" id="kontakt">
+    <p class="section-tag">Interesse</p>
+    <h2 class="section-title">Er dette dit næste hjem?</h2>
+    <div class="section-body">
+      <p>Boligen sælges privat. Skriv eller ring for at aftale en fremvisning.</p>
+    </div>
+    <a href="mailto:nicolai@herforth.dk" class="cta-btn">Kontakt os</a>
+  </section>
 
-// Nav scroll
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 80);
-});
+  <!-- FOOTER -->
+  <footer>
+    Doris Lessings Vej 37D, 2300 København S &mdash; 2026
+  </footer>
 
-// Subtle parallax on hero image
-const heroImage = document.getElementById('heroImage');
-window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY;
-  if (scrolled < window.innerHeight) {
-    heroImage.style.transform = `scale(${1.1 - scrolled * 0.0001}) translateY(${scrolled * 0.15}px)`;
-  }
-});
-
-// Reveal on scroll with stagger
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12 });
-reveals.forEach(el => observer.observe(el));
-</script>
-
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
 </body>
 </html>
