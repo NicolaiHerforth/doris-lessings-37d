@@ -154,8 +154,8 @@
       transform: rotate(45deg); animation: scrollBounce 2s ease infinite;
     }
     @keyframes scrollBounce {
-      0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.5; }
-      50% { transform: rotate(45deg) translateY(6px); opacity: 1; }
+      0%, 100% { transform: translateY(0) rotate(45deg); opacity: 0.5; }
+      50% { transform: translateY(8px) rotate(45deg); opacity: 1; }
     }
 
     @media (max-width: 768px) {
@@ -415,6 +415,20 @@
       transition: filter 0.3s;
     }
     .gallery-track img:hover { filter: brightness(0.92); }
+    .gallery-hint {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.8rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .gallery-hint-arrow {
+      display: inline-block; width: 40px; height: 1px; background: var(--gold);
+      position: relative;
+    }
+    .gallery-hint-arrow::after {
+      content: ''; position: absolute; right: 0; top: -3px;
+      width: 7px; height: 7px; border-right: 1px solid var(--gold);
+      border-top: 1px solid var(--gold); transform: rotate(45deg);
+    }
     @media (max-width: 768px) {
       .gallery-section { padding: 4rem 0 4rem 1.5rem; }
       .gallery-track { flex-direction: column; overflow-x: hidden; padding-right: 1.5rem; }
@@ -525,6 +539,19 @@
     </div>
   </section>
 
+  <!-- TERRACE SHOWCASE — FULL VIEWPORT (WOW MOMENT) -->
+  <section class="terrace-section">
+    <div class="terrace-half">
+      <img src="assets/photos/terrace-lounge-clean.jpg" alt="Tagterrasse med lounge, lyskæder og planter" loading="lazy">
+    </div>
+    <div class="terrace-half">
+      <img src="assets/photos/terrace-bistro-clean.jpg" alt="Tagterrasse med bistrobord og udsigt" loading="lazy">
+      <div class="terrace-overlay">
+        <p class="terrace-quote">Din egen himmel<br>over København</p>
+      </div>
+    </div>
+  </section>
+
   <!-- INTRO — EDITORIAL LAYOUT -->
   <section class="intro-section" id="boligen">
     <div class="intro-grid">
@@ -539,42 +566,6 @@
       </div>
       <div class="intro-image reveal" style="transition-delay: 0.15s;">
         <img src="assets/photos/kitchen-dining-signal.jpg" alt="Køkken og spisestue med naturligt lys" loading="lazy">
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES — ALTERNATING EDITORIAL -->
-  <section class="features-section">
-    <div class="feature-row reveal">
-      <div class="feature-img-wrap">
-        <img src="assets/photos/IMG_3464.webp" alt="Hjemmekontor med dobbelte skærme" loading="lazy">
-      </div>
-      <div class="feature-content">
-        <div class="feature-number">02</div>
-        <h3 class="feature-title">Dit hjemmekontor</h3>
-        <p class="feature-text">Et dedikeret kontor med plads til dobbelte skærme og ro til dybe tanker. Adskilt fra resten af hjemmet på sit eget split-level, så arbejde og fritid aldrig blandes.</p>
-      </div>
-    </div>
-
-    <div class="feature-row reverse reveal">
-      <div class="feature-img-wrap">
-        <img src="assets/photos/IMG_3463.webp" alt="Walk-in garderobe" loading="lazy">
-      </div>
-      <div class="feature-content">
-        <div class="feature-number">03</div>
-        <h3 class="feature-title">Walk-in garderobe</h3>
-        <p class="feature-text">Morgenerne bliver lettere med en walk-in garderobe ved soveværelset. Plads til alt — og overblik over det hele. En luksus, der hurtigt bliver hverdag.</p>
-      </div>
-    </div>
-
-    <div class="feature-row reveal">
-      <div class="feature-img-wrap">
-        <img src="assets/photos/IMG_3461.webp" alt="Soveværelse med minimalistisk indretning" loading="lazy">
-      </div>
-      <div class="feature-content">
-        <div class="feature-number">04</div>
-        <h3 class="feature-title">Soveværelset</h3>
-        <p class="feature-text">Trukket væk fra husets liv, på sit eget rolige niveau. Store vinduer, blødt lys, og en stilhed der gør, at du faktisk sover — ikke bare lukker øjnene.</p>
       </div>
     </div>
   </section>
@@ -615,15 +606,38 @@
     </div>
   </section>
 
-  <!-- TERRACE SHOWCASE — FULL VIEWPORT -->
-  <section class="terrace-section">
-    <div class="terrace-half">
-      <img src="assets/photos/terrace-lounge-clean.jpg" alt="Tagterrasse med lounge, lyskæder og planter" loading="lazy">
+  <!-- FEATURES — ALTERNATING EDITORIAL -->
+  <section class="features-section">
+    <div class="feature-row reveal">
+      <div class="feature-img-wrap">
+        <img src="assets/photos/IMG_3464.webp" alt="Hjemmekontor med dobbelte skærme" loading="lazy">
+      </div>
+      <div class="feature-content">
+        <div class="feature-number">02</div>
+        <h3 class="feature-title">Dit hjemmekontor</h3>
+        <p class="feature-text">Et dedikeret kontor med plads til dobbelte skærme og ro til dybe tanker. Adskilt fra resten af hjemmet på sit eget split-level, så arbejde og fritid aldrig blandes.</p>
+      </div>
     </div>
-    <div class="terrace-half">
-      <img src="assets/photos/terrace-bistro-clean.jpg" alt="Tagterrasse med bistrobord og udsigt" loading="lazy">
-      <div class="terrace-overlay">
-        <p class="terrace-quote">Din egen himmel<br>over København</p>
+
+    <div class="feature-row reverse reveal">
+      <div class="feature-img-wrap">
+        <img src="assets/photos/IMG_3463.webp" alt="Walk-in garderobe" loading="lazy">
+      </div>
+      <div class="feature-content">
+        <div class="feature-number">03</div>
+        <h3 class="feature-title">Walk-in garderobe</h3>
+        <p class="feature-text">Morgenerne bliver lettere med en walk-in garderobe ved soveværelset. Plads til alt — og overblik over det hele. En luksus, der hurtigt bliver hverdag.</p>
+      </div>
+    </div>
+
+    <div class="feature-row reveal">
+      <div class="feature-img-wrap">
+        <img src="assets/photos/IMG_3461.webp" alt="Soveværelse med minimalistisk indretning" loading="lazy">
+      </div>
+      <div class="feature-content">
+        <div class="feature-number">04</div>
+        <h3 class="feature-title">Soveværelset</h3>
+        <p class="feature-text">Trukket væk fra husets liv, på sit eget rolige niveau. Store vinduer, blødt lys, og en stilhed der gør, at du faktisk sover — ikke bare lukker øjnene.</p>
       </div>
     </div>
   </section>
@@ -692,11 +706,13 @@
       <span class="section-tag">Galleri</span>
       <h2 class="section-title">Se hele hjemmet</h2>
     </div>
+    <div class="gallery-hint"><span class="gallery-hint-arrow"></span> Scroll for at se mere</div>
     <div class="gallery-track">
-      <img src="assets/photos/IMG_3458.webp" alt="Køkken med trappe i baggrunden" loading="lazy" data-gallery="0">
-      <img src="assets/photos/IMG_3459.webp" alt="Stue set oppefra med cognacfarvet sofa" loading="lazy" data-gallery="1">
-      <img src="assets/photos/IMG_0039.jpg" alt="Tagterrasse lounge — original" loading="lazy" data-gallery="2">
-      <img src="assets/photos/IMG_0040.jpg" alt="Tagterrasse bistro — original" loading="lazy" data-gallery="3">
+      <img src="assets/photos/IMG_3459.webp" alt="Stue set oppefra med cognacfarvet sofa" loading="lazy" data-gallery="0">
+      <img src="assets/photos/IMG_3458.webp" alt="Køkken med trappe i baggrunden" loading="lazy" data-gallery="1">
+      <img src="assets/photos/IMG_0039.jpg" alt="Tagterrasse i solskin" loading="lazy" data-gallery="2">
+      <img src="assets/photos/IMG_0040.jpg" alt="Tagterrasse med udsigt over kvarteret" loading="lazy" data-gallery="3">
+      <img src="assets/photos/IMG_1718.jpg" alt="Gårdhave og forhave" loading="lazy" data-gallery="4">
     </div>
   </section>
 
