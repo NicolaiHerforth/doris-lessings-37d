@@ -490,6 +490,11 @@
       font-style: italic; margin-top: 0.5rem;
     }
 
+    /* FACTS RESPONSIVE */
+    @media (max-width: 900px) {
+      .facts-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
+    }
+
     /* FOOTER */
     footer {
       padding: 3rem 2rem; text-align: center;
@@ -710,23 +715,88 @@
     </div>
   </section>
 
+  <!-- FACTS -->
+  <section style="padding: 6rem 3rem; max-width: 1200px; margin: 0 auto;">
+    <div class="facts-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+      <div>
+        <span class="section-tag">Boligens fakta</span>
+        <h2 class="section-title" style="margin-bottom: 2.5rem;">Nøgletal</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
+          <div style="padding: 1.25rem 0; border-top: 1px solid rgba(0,0,0,0.08);">
+            <p style="font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.35rem;">Boligtype</p>
+            <p style="font-size: 1rem; font-weight: 500; color: var(--dark);">Rækkehus</p>
+          </div>
+          <div style="padding: 1.25rem 0; border-top: 1px solid rgba(0,0,0,0.08);">
+            <p style="font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.35rem;">Boligareal</p>
+            <p style="font-size: 1rem; font-weight: 500; color: var(--dark);">150 m²</p>
+          </div>
+          <div style="padding: 1.25rem 0; border-top: 1px solid rgba(0,0,0,0.08);">
+            <p style="font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.35rem;">Grundareal</p>
+            <p style="font-size: 1rem; font-weight: 500; color: var(--dark);">82 m²</p>
+          </div>
+          <div style="padding: 1.25rem 0; border-top: 1px solid rgba(0,0,0,0.08);">
+            <p style="font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.35rem;">Værelser</p>
+            <p style="font-size: 1rem; font-weight: 500; color: var(--dark);">5</p>
+          </div>
+          <div style="padding: 1.25rem 0; border-top: 1px solid rgba(0,0,0,0.08);">
+            <p style="font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.35rem;">Etager</p>
+            <p style="font-size: 1rem; font-weight: 500; color: var(--dark);">3</p>
+          </div>
+          <div style="padding: 1.25rem 0; border-top: 1px solid rgba(0,0,0,0.08);">
+            <p style="font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.35rem;">Byggeår</p>
+            <p style="font-size: 1rem; font-weight: 500; color: var(--dark);">2017</p>
+          </div>
+          <div style="padding: 1.25rem 0; border-top: 1px solid rgba(0,0,0,0.08);">
+            <p style="font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.35rem;">Energimærke</p>
+            <p style="font-size: 1rem; font-weight: 500; color: var(--dark);">A2020</p>
+          </div>
+          <div style="padding: 1.25rem 0; border-top: 1px solid rgba(0,0,0,0.08);">
+            <p style="font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.35rem;">Sagsnr.</p>
+            <p style="font-size: 1rem; font-weight: 500; color: var(--dark);">10-X0003364</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="section-tag">Økonomi</span>
+        <h2 class="section-title" style="margin-bottom: 2.5rem;">Pris</h2>
+        <div style="margin-bottom: 2rem;">
+          <p style="font-family: var(--serif); font-size: 3rem; font-weight: 500; color: var(--dark); line-height: 1;">8.495.000 kr.</p>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">Kontantpris</p>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 0;">
+          <div style="padding: 1rem 0; border-top: 1px solid rgba(0,0,0,0.08); display: flex; justify-content: space-between;">
+            <span style="font-size: 0.9rem; color: var(--text-secondary);">Udbetaling</span>
+            <span style="font-size: 0.9rem; font-weight: 500; color: var(--dark);">425.000 kr.</span>
+          </div>
+          <div style="padding: 1rem 0; border-top: 1px solid rgba(0,0,0,0.08); display: flex; justify-content: space-between;">
+            <span style="font-size: 0.9rem; color: var(--text-secondary);">Mdl. ejerudgifter</span>
+            <span style="font-size: 0.9rem; font-weight: 500; color: var(--dark);">4.254 kr.</span>
+          </div>
+          <div style="padding: 1rem 0; border-top: 1px solid rgba(0,0,0,0.08); display: flex; justify-content: space-between;">
+            <span style="font-size: 0.9rem; color: var(--text-secondary);">Brutto/md. ekskl. ejerudgift</span>
+            <span style="font-size: 0.9rem; font-weight: 500; color: var(--dark);">45.665 kr.</span>
+          </div>
+          <div style="padding: 1rem 0; border-top: 1px solid rgba(0,0,0,0.08); display: flex; justify-content: space-between;">
+            <span style="font-size: 0.9rem; color: var(--text-secondary);">Netto/md. ekskl. ejerudgift</span>
+            <span style="font-size: 0.9rem; font-weight: 500; color: var(--dark);">37.256 kr.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-section" id="kontakt">
-    <span class="section-tag">Privat salg</span>
+    <span class="section-tag">Kontakt</span>
     <h2 class="section-title">Du ved allerede,<br>om det er dit.</h2>
     <div class="section-body">
-      <p>Boligen sælges privat. Ingen mægler, ingen åbent hus.<br>Bare en samtale mellem dig og os.</p>
+      <p>Ring eller skriv til mægler for at aftale en fremvisning.</p>
     </div>
     <div class="cta-contact">
-      <a href="mailto:nicolai.herforth@gmail.com">nicolai.herforth@gmail.com</a>
-      <a href="tel:+4531350287">+45 31 35 02 87</a>
-      <p class="cta-note">Skriv eller ring — vi finder et tidspunkt</p>
-      <div style="margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
-        <p style="color: rgba(255,255,255,0.4); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem;">Mægler</p>
-        <p style="color: rgba(255,255,255,0.7); font-size: 1rem; font-weight: 500;">Lasse Sundberg</p>
-        <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">LokalBolig Amager</p>
-        <a href="tel:+4541890705" style="color: var(--gold); text-decoration: none; font-size: 1rem; display: inline-block; margin-top: 0.5rem;">+45 41 89 07 05</a>
-      </div>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; font-weight: 500; margin-bottom: 0.25rem;">Lasse Sundberg</p>
+      <p style="color: rgba(255,255,255,0.45); font-size: 0.9rem; margin-bottom: 1.25rem;">LokalBolig Amager</p>
+      <a href="tel:+4541890705">+45 41 89 07 05</a>
+      <a href="https://www.lokalbolig.dk/bolig/r%C3%A6kkehus/k%C3%B8benhavn-s/2300/doris-lessings-vej-37d/10-X0003364" target="_blank" rel="noopener" style="color: rgba(255,255,255,0.4); font-size: 0.85rem; margin-top: 1.5rem; text-decoration: underline; text-underline-offset: 3px;">Se boligen på LokalBolig.dk</a>
     </div>
   </section>
 
