@@ -2,13 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Doris Lessings Vej 37D — Ørestad, Copenhagen</title>
-  <meta name="description" content="Unique townhouse in Ørestad with private rooftop terrace, 6 split-levels and 150 m². One of only five in the Bella row.">
-  <meta property="og:title" content="Doris Lessings Vej 37D — Ørestad">
-  <meta property="og:description" content="Unique townhouse with private rooftop terrace. 150 m², 3 floors, 6 levels. One of only five.">
+  <meta name="description" content="Townhouse for sale in Ørestad, Copenhagen — Doris Lessings Vej 37D. 150 m², 5 rooms, 3 floors with 6 split-levels, private rooftop terrace and Gaggenau kitchen. One of only five in the Bella row. Asking price DKK 8,250,000.">
+  <meta name="keywords" content="townhouse for sale Copenhagen, Ørestad townhouse, Doris Lessings Vej, property for sale Copenhagen S, rooftop terrace townhouse Copenhagen, split-level townhouse Denmark, Bella row Ørestad, house for sale 2300 Copenhagen, Copenhagen real estate, family home Ørestad">
+  <link rel="canonical" href="https://doris-lessings-37d.netlify.app/index-en.html">
+  <link rel="alternate" hreflang="da" href="https://doris-lessings-37d.netlify.app/">
+  <link rel="alternate" hreflang="en" href="https://doris-lessings-37d.netlify.app/index-en.html">
+  <meta property="og:title" content="Doris Lessings Vej 37D — Unique townhouse for sale in Ørestad, Copenhagen">
+  <meta property="og:description" content="150 m² townhouse with private rooftop terrace, 5 rooms and 6 split-levels. One of only five in the Bella row, Ørestad Syd. DKK 8,250,000.">
   <meta property="og:image" content="https://doris-lessings-37d.netlify.app/assets/photos/IMG_3457-hq.jpg">
+  <meta property="og:url" content="https://doris-lessings-37d.netlify.app/index-en.html">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Doris Lessings Vej 37D — Townhouse for sale in Ørestad, Copenhagen">
+  <meta name="twitter:description" content="150 m² townhouse with private rooftop terrace, 5 rooms, 6 levels. Bella row, Ørestad Syd. DKK 8,250,000.">
+  <meta name="twitter:image" content="https://doris-lessings-37d.netlify.app/assets/photos/IMG_3457-hq.jpg">
+  <link rel="preload" as="image" href="assets/photos/IMG_3457-hq.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    "name": "Doris Lessings Vej 37D — Townhouse for sale in Ørestad, Copenhagen",
+    "description": "Unique townhouse with private rooftop terrace in the Bella row, Ørestad Syd. 150 m², 5 rooms, 3 floors with 6 split-levels. Built 2017, energy rating A2020.",
+    "url": "https://doris-lessings-37d.netlify.app/index-en.html",
+    "image": "https://doris-lessings-37d.netlify.app/assets/photos/IMG_3457-hq.jpg",
+    "datePosted": "2026-02-01",
+    "about": {
+      "@type": ["Residence", "SingleFamilyResidence"],
+      "name": "Doris Lessings Vej 37D",
+      "description": "Split-level townhouse with private rooftop terrace in the Bella row, Ørestad Syd",
+      "numberOfRooms": 5,
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 150,
+        "unitCode": "MTK"
+      },
+      "yearBuilt": 2017,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Doris Lessings Vej 37D",
+        "addressLocality": "København S",
+        "postalCode": "2300",
+        "addressRegion": "Hovedstaden",
+        "addressCountry": "DK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 55.6295,
+        "longitude": 12.5785
+      }
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": 8250000,
+      "priceCurrency": "DKK"
+    },
+    "broker": {
+      "@type": "RealEstateAgent",
+      "name": "Lasse Sundberg",
+      "worksFor": {
+        "@type": "RealEstateAgent",
+        "name": "LokalBolig Amager"
+      },
+      "telephone": "+4541890705"
+    }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
   <style>
@@ -490,6 +553,24 @@
       font-style: italic; margin-top: 0.5rem;
     }
 
+    /* FLOOR PLANS */
+    .plans-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .plans-grid img {
+      width: 100%; height: auto; display: block;
+      background: #fff; padding: 1rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      cursor: pointer; transition: transform 0.3s;
+    }
+    .plans-grid img:hover { transform: scale(1.02); }
+    .plan-label {
+      text-align: center; font-size: 0.8rem; color: var(--text-secondary);
+      margin-top: 0.5rem; letter-spacing: 0.05em;
+    }
+
+    /* FACTS RESPONSIVE */
     @media (max-width: 900px) {
       .facts-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
     }
@@ -532,10 +613,10 @@
 
   <!-- HERO -->
   <section class="hero">
-    <img src="assets/photos/IMG_3457-hq.jpg" alt="Køkken og spisestue med åbne terrassedøre og kobberpendler" class="hero-img" id="heroImg" loading="eager">
+    <img src="assets/photos/IMG_3457-hq.jpg" alt="Kitchen and dining area with open terrace doors and copper pendants" class="hero-img" id="heroImg" loading="eager">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-tag">Ørestad South · The Bella Row</p>
+      <p class="hero-tag">Ørestad Syd · The Bella Row</p>
       <h1 class="hero-title">Doris Lessings<br>Vej 37D</h1>
       <p class="hero-subtitle">Three floors. Six levels. Your own rooftop terrace above the city.<br>One of only five houses — and the only one for sale.</p>
     </div>
@@ -554,11 +635,11 @@
         <h2 class="section-title">A house that feels<br>like a secret</h2>
         <div class="section-body">
           <p>You open the door and feel it straightaway. The space breathes. Light falls at an angle through three storeys, and you can hear the silence — the kind of silence you only find in a home designed with intention. 150 square metres across six levels, each with its own character, its own light.</p>
-          <p>Life unfolds slowly here. Coffee on the warm kitchen level. Focused work half a floor up. The children an entire level to themselves. And when the day lets go of you — the roof. Your private terrace, string lights, sunset over Ørestad. This isn't a flat. It's a house in the city — with the metro to Kongens Nytorv in twelve minutes.</p>
+          <p>Life unfolds slowly here. Coffee on the warm kitchen level. Focused work half a floor up. The children an entire level to themselves. And when the day lets go of you — the roof. Your private terrace, string lights, sunset over Ørestad. This isn't a flat. It's a house in the city — with the metro to Kongens Nytorv in fourteen minutes.</p>
         </div>
       </div>
       <div class="intro-image reveal" style="transition-delay: 0.15s;">
-        <img src="assets/photos/kitchen-dining-signal.jpg" alt="Køkken og spisestue med naturligt lys" loading="lazy">
+        <img src="assets/photos/IMG_3459-hq.jpg" alt="Living room with cognac sofa and natural light" loading="lazy">
       </div>
     </div>
   </section>
@@ -566,10 +647,10 @@
   <!-- TERRACE SHOWCASE — FULL VIEWPORT -->
   <section class="terrace-section">
     <div class="terrace-half">
-      <img src="assets/photos/terrace-lounge-clean.jpg" alt="Rooftop terrace lounge with string lights" loading="lazy">
+      <img src="assets/photos/terrace-lounge-clean.jpg" alt="Rooftop terrace with lounge, string lights and plants" loading="lazy">
     </div>
     <div class="terrace-half">
-      <img src="assets/photos/terrace-bistro-clean.jpg" alt="Rooftop terrace bistro with neighbourhood view" loading="lazy">
+      <img src="assets/photos/terrace-bistro-clean.jpg" alt="Rooftop terrace with bistro table and view" loading="lazy">
       <div class="terrace-overlay">
         <p class="terrace-quote">Your own sky<br>above Ørestad</p>
       </div>
@@ -584,7 +665,7 @@
         <span class="section-tag">Architecture</span>
         <h2 class="section-title">Built for living,<br>not just inhabiting</h2>
         <div class="section-body">
-          <p>The Bella area has many townhouses. But only five of them — the Bella row — were designed with this split-level architecture. They rarely come to market. A townhouse of this spatial quality is nearly impossible to find at this price in Copenhagen. Each half-storey shifts the perspective — you move upward through the home as through a slow breath. Nothing repeats. Nothing feels accidental.</p>
+          <p>The Bella area has many townhouses. But only one row — five homes with split-level plans — stands markedly apart from the rest. They rarely come to market. A townhouse of this spatial quality is nearly impossible to find at this price in Copenhagen. Each half-storey shifts the perspective — you move upward through the home as through a slow breath. Nothing repeats. Nothing feels accidental.</p>
         </div>
         <div class="arch-divider"></div>
         <div class="arch-stats">
@@ -607,7 +688,7 @@
         </div>
       </div>
       <div class="arch-image reveal" style="transition-delay: 0.15s;">
-        <img src="assets/photos/IMG_3465-hq.jpg" alt="Trapperum set oppefra — dramatisk arkitektonisk perspektiv" loading="lazy">
+        <img src="assets/photos/IMG_3465-hq.jpg" alt="Stairwell seen from above — dramatic architectural perspective" loading="lazy">
       </div>
     </div>
   </section>
@@ -616,7 +697,7 @@
   <section class="features-section">
     <div class="feature-row reveal">
       <div class="feature-img-wrap">
-        <img src="assets/photos/IMG_3464-hq.jpg" alt="Hjemmekontor med dobbelte skærme" loading="lazy">
+        <img src="assets/photos/IMG_3464-hq.jpg" alt="Home office with dual screens" loading="lazy">
       </div>
       <div class="feature-content">
         <div class="feature-number">02</div>
@@ -627,7 +708,7 @@
 
     <div class="feature-row reverse reveal">
       <div class="feature-img-wrap">
-        <img src="assets/photos/IMG_3463-hq.jpg" alt="Walk-in garderobe" loading="lazy">
+        <img src="assets/photos/IMG_3463-hq.jpg" alt="Walk-in wardrobe" loading="lazy">
       </div>
       <div class="feature-content">
         <div class="feature-number">03</div>
@@ -638,7 +719,7 @@
 
     <div class="feature-row reveal">
       <div class="feature-img-wrap">
-        <img src="assets/photos/IMG_3461-hq.jpg" alt="Soveværelse med minimalistisk indretning" loading="lazy">
+        <img src="assets/photos/IMG_3461-hq.jpg" alt="Bedroom with minimalist décor" loading="lazy">
       </div>
       <div class="feature-content">
         <div class="feature-number">04</div>
@@ -652,26 +733,26 @@
   <section class="location-section" id="location">
     <div class="location-header reveal">
       <span class="section-tag">Location</span>
-      <h2 class="section-title">Two minutes to the metro.<br>Three to nature.</h2>
+      <h2 class="section-title">Five minutes to the metro.<br>Three to nature.</h2>
       <div class="section-body">
-        <p>Ørestad sits where the city ends and the landscape begins. The metro takes you to Kongens Nytorv in twelve minutes. Amager Fælled starts at your back door. The airport is closer than Nørrebro. You don't live on the outskirts of anything — you live in the middle of everything.</p>
+        <p>Ørestad sits where the city ends and the landscape begins. The metro takes you to Kongens Nytorv in fourteen minutes. Amager Fælled starts at your back door. The airport is closer than Nørrebro. You don't live on the outskirts of anything — you live in the middle of everything.</p>
       </div>
     </div>
     <div class="location-grid reveal">
       <div class="loc-item">
-        <span class="loc-time">2</span><span class="loc-unit"> min</span>
+        <span class="loc-time">5</span><span class="loc-unit"> min</span>
         <div class="loc-dest">Bella Center Metro</div>
       </div>
       <div class="loc-item">
-        <span class="loc-time">5</span><span class="loc-unit"> min</span>
+        <span class="loc-time">7</span><span class="loc-unit"> min</span>
         <div class="loc-dest">Fields Shopping</div>
       </div>
       <div class="loc-item">
-        <span class="loc-time">12</span><span class="loc-unit"> min</span>
+        <span class="loc-time">14</span><span class="loc-unit"> min</span>
         <div class="loc-dest">Kongens Nytorv</div>
       </div>
       <div class="loc-item">
-        <span class="loc-time">10</span><span class="loc-unit"> min</span>
+        <span class="loc-time">14</span><span class="loc-unit"> min</span>
         <div class="loc-dest">Copenhagen Airport</div>
       </div>
       <div class="loc-item">
@@ -679,7 +760,7 @@
         <div class="loc-dest">Amager Fælled</div>
       </div>
       <div class="loc-item">
-        <span class="loc-time">8</span><span class="loc-unit"> min</span>
+        <span class="loc-time">10</span><span class="loc-unit"> min</span>
         <div class="loc-dest">Amager Beach</div>
       </div>
     </div>
@@ -691,12 +772,12 @@
       <span class="section-tag">The neighbourhood</span>
       <h2 class="section-title">Canals, commons<br>and neighbours who wave</h2>
       <div class="section-body">
-        <p>Ørestad South has the energy of a young neighbourhood that's finally found its rhythm. The canals mirror the sky each morning. The commons stretch southward like an open lung. The Bella row sits set back from the road, surrounded by low-rise buildings and shared courtyards — it feels more like a pocket of calm than a district.</p>
-        <p>Your children cycle to school along the water. You catch the metro in two minutes. And in summer — when the light hangs in the air until ten — you sit on the roof and watch the sun disappear behind the commons. Slowly. As though it doesn't want to leave either.</p>
+        <p>Ørestad Syd has the energy of a young neighbourhood that's finally found its rhythm. The canals mirror the sky each morning. The commons stretch southward like an open lung. The Bella row sits set back from the road, surrounded by low-rise buildings and shared courtyards — it feels more like a pocket of calm than a district.</p>
+        <p>Your children cycle to school along the water. You catch the metro in five minutes. And in summer — when the light hangs in the air until ten — you sit on the roof and watch the sun disappear behind the commons. Slowly. As though it doesn't want to leave either.</p>
       </div>
     </div>
     <div class="neighborhood-image reveal" style="transition-delay: 0.15s;">
-      <img src="assets/photos/porch-clean.jpg" alt="Forhave og indgangsparti" loading="lazy">
+      <img src="assets/photos/outside.jpg" alt="Shared courtyard with playground and green areas" loading="lazy">
     </div>
   </div>
 
@@ -708,11 +789,54 @@
     </div>
     <div class="gallery-hint"><span class="gallery-hint-arrow"></span> Scroll to see more</div>
     <div class="gallery-track">
-      <img src="assets/photos/IMG_3459-hq.jpg" alt="Stue set oppefra med cognacfarvet sofa" loading="lazy" data-gallery="0">
-      <img src="assets/photos/IMG_3458-hq.jpg" alt="Køkken med trappe i baggrunden" loading="lazy" data-gallery="1">
-      <img src="assets/photos/terrace-lounge-clean.jpg" alt="Rooftop terrace lounge" loading="lazy" data-gallery="2">
-      <img src="assets/photos/terrace-bistro-clean.jpg" alt="Rooftop terrace bistro" loading="lazy" data-gallery="3">
-      <img src="assets/photos/porch-clean.jpg" alt="Courtyard and entrance" loading="lazy" data-gallery="4">
+      <img src="assets/photos/DSC00149.jpg" alt="Living room with sofa and large windows" loading="lazy">
+      <img src="assets/photos/DSC00194.jpg" alt="Kitchen and dining area with staircase" loading="lazy">
+      <img src="assets/photos/cooktop-clean.jpg" alt="Gaggenau induction cooktop" loading="lazy">
+      <img src="assets/photos/DSC00119.jpg" alt="Bathroom with shower" loading="lazy">
+      <img src="assets/photos/DSC00169.jpg" alt="WC and bathroom" loading="lazy">
+      <img src="assets/photos/DSC00091.jpg" alt="Stairs to rooftop terrace" loading="lazy">
+      <img src="assets/photos/terrace-lounge-clean.jpg" alt="Rooftop terrace lounge" loading="lazy">
+      <img src="assets/photos/terrace-bistro-clean.jpg" alt="Rooftop terrace with view" loading="lazy">
+      <img src="assets/photos/DSC00214.jpg" alt="Entrance 37D" loading="lazy">
+      <img src="assets/photos/outside.jpg" alt="Courtyard and shared areas" loading="lazy">
+      <img src="assets/photos/porch-clean.jpg" alt="Front garden and courtyard" loading="lazy">
+    </div>
+  </section>
+
+  <!-- FLOOR PLANS -->
+  <section style="padding: 6rem 3rem; max-width: 1200px; margin: 0 auto;">
+    <span class="section-tag">Floor plans</span>
+    <h2 class="section-title">Six levels, one home</h2>
+    <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary); max-width: 600px; margin-bottom: 1rem;">Each half-storey has its own function. From the entrance and utility room on the first floor to the private rooftop terrace on the sixth.</p>
+    <div class="plans-grid">
+      <div>
+        <img src="assets/photos/stue-plan.jpg" alt="Ground floor — kitchen and terrace" loading="lazy" class="plan-img">
+        <p class="plan-label">Ground floor — Kitchen & terrace</p>
+      </div>
+      <div>
+        <img src="assets/photos/1sal-plan.jpg" alt="1st floor — entrance, utility, WC" loading="lazy" class="plan-img">
+        <p class="plan-label">1st floor — Entrance & utility</p>
+      </div>
+      <div>
+        <img src="assets/photos/2sal-plan.jpg" alt="2nd floor" loading="lazy" class="plan-img">
+        <p class="plan-label">2nd floor</p>
+      </div>
+      <div>
+        <img src="assets/photos/3sal-plan.jpg" alt="3rd floor" loading="lazy" class="plan-img">
+        <p class="plan-label">3rd floor</p>
+      </div>
+      <div>
+        <img src="assets/photos/4sal-plan.jpg" alt="4th floor" loading="lazy" class="plan-img">
+        <p class="plan-label">4th floor</p>
+      </div>
+      <div>
+        <img src="assets/photos/5sal-plan.jpg" alt="5th floor" loading="lazy" class="plan-img">
+        <p class="plan-label">5th floor</p>
+      </div>
+      <div>
+        <img src="assets/photos/6sal-plan.jpg" alt="6th floor — rooftop terrace" loading="lazy" class="plan-img">
+        <p class="plan-label">6th floor — Rooftop terrace</p>
+      </div>
     </div>
   </section>
 
@@ -761,25 +885,25 @@
         <span class="section-tag">Financials</span>
         <h2 class="section-title" style="margin-bottom: 2.5rem;">Price</h2>
         <div style="margin-bottom: 2rem;">
-          <p style="font-family: var(--serif); font-size: 3rem; font-weight: 500; color: var(--dark); line-height: 1;">DKK 8,495,000</p>
+          <p style="font-family: var(--serif); font-size: 3rem; font-weight: 500; color: var(--dark); line-height: 1;">8.250.000 kr.</p>
           <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">Asking price</p>
         </div>
         <div style="display: grid; grid-template-columns: 1fr; gap: 0;">
           <div style="padding: 1rem 0; border-top: 1px solid rgba(0,0,0,0.08); display: flex; justify-content: space-between;">
             <span style="font-size: 0.9rem; color: var(--text-secondary);">Down payment</span>
-            <span style="font-size: 0.9rem; font-weight: 500; color: var(--dark);">DKK 425,000</span>
+            <span style="font-size: 0.9rem; font-weight: 500; color: var(--dark);">425.000 kr.</span>
           </div>
           <div style="padding: 1rem 0; border-top: 1px solid rgba(0,0,0,0.08); display: flex; justify-content: space-between;">
             <span style="font-size: 0.9rem; color: var(--text-secondary);">Monthly owner costs</span>
-            <span style="font-size: 0.9rem; font-weight: 500; color: var(--dark);">DKK 4,254</span>
+            <span style="font-size: 0.9rem; font-weight: 500; color: var(--dark);">4.254 kr.</span>
           </div>
           <div style="padding: 1rem 0; border-top: 1px solid rgba(0,0,0,0.08); display: flex; justify-content: space-between;">
-            <span style="font-size: 0.9rem; color: var(--text-secondary);">Gross/month excl. costs</span>
-            <span style="font-size: 0.9rem; font-weight: 500; color: var(--dark);">DKK 45,665</span>
+            <span style="font-size: 0.9rem; color: var(--text-secondary);">Gross/month excl. owner costs</span>
+            <span style="font-size: 0.9rem; font-weight: 500; color: var(--dark);">45.665 kr.</span>
           </div>
           <div style="padding: 1rem 0; border-top: 1px solid rgba(0,0,0,0.08); display: flex; justify-content: space-between;">
-            <span style="font-size: 0.9rem; color: var(--text-secondary);">Net/month excl. costs</span>
-            <span style="font-size: 0.9rem; font-weight: 500; color: var(--dark);">DKK 37,256</span>
+            <span style="font-size: 0.9rem; color: var(--text-secondary);">Net/month excl. owner costs</span>
+            <span style="font-size: 0.9rem; font-weight: 500; color: var(--dark);">37.256 kr.</span>
           </div>
         </div>
       </div>
@@ -791,7 +915,7 @@
     <span class="section-tag">Contact</span>
     <h2 class="section-title">You already know<br>if it's yours.</h2>
     <div class="section-body">
-      <p>Call or write to arrange a viewing.</p>
+      <p>Ring or write to the agent to arrange a viewing.</p>
     </div>
     <div class="cta-contact">
       <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; font-weight: 500; margin-bottom: 0.25rem;">Lasse Sundberg</p>
@@ -804,13 +928,14 @@
   <!-- FOOTER -->
   <footer>
     Doris Lessings Vej 37D, 2300 København S &mdash; 2026
+    <br><span style="font-size: 0.7rem; opacity: 0.5;">This page was created by the owner. All enquiries are handled by LokalBolig Amager.</span>
   </footer>
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lbClose" aria-label="Luk">&times;</button>
-    <button class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Forrige">&#8249;</button>
-    <button class="lightbox-nav lightbox-next" id="lbNext" aria-label="Næste">&#8250;</button>
+    <button class="lightbox-close" id="lbClose" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Previous">&#8249;</button>
+    <button class="lightbox-nav lightbox-next" id="lbNext" aria-label="Next">&#8250;</button>
     <img src="" alt="" id="lbImg">
     <div class="lightbox-counter" id="lbCounter"></div>
   </div>
@@ -870,7 +995,7 @@
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImg');
     const lbCounter = document.getElementById('lbCounter');
-    const galleryImgs = document.querySelectorAll('.gallery-track img');
+    const galleryImgs = document.querySelectorAll('.gallery-track img, .plan-img');
     const gallerySrcs = Array.from(galleryImgs).map(i => i.src);
     let lbIndex = 0;
 
